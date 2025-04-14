@@ -16,6 +16,7 @@ export const formatRichText = (richText: string) => {
     if (!lang) return hljs.highlightAuto(text)
     try {
       return hljs.highlight(text, { language: lang?.replace(/^language-/, '') || '' })
+      // biome-ignore lint/correctness/noUnusedVariables: <explanation>
     } catch (e) {
       return hljs.highlightAuto(text)
     }

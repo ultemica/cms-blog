@@ -22,8 +22,14 @@ jobs:
       - name: Install Dependencies
         run: bun install --frozen-lockfile --ignore-scripts
 
-      - name: Build NextJS
+      - name: Build NextJS(SSR)
+        run: bunx @cloudflare/next-on-pages
+
+      - name: Deploy to Cloudflare Pages
+        run: bun wrangler pages deploy .vercel/output/static --project-name cms-blog
+
+      - name: Build NextJS(SSG)
         run: bun run build
 
-      # - name: Deploy to Cloudflare Pages
-      #   run:
+      - name: Deploy to Cloudflare Pages
+        run: bun wrangler pages deploy .vercel/output/static --project-name cms-blog

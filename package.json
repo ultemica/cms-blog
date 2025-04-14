@@ -37,6 +37,7 @@
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.1.3",
     "tw-animate-css": "^1.2.5",
+    "wrangler": "^4.10.0",
     "zenn-content-css": "^0.1.158",
     "zenn-markdown-html": "^0.1.158"
   },

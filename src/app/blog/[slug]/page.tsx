@@ -1,21 +1,21 @@
-import type { BlogList, Datum } from '@/src/models/blog.dto'
+import type {} from '@/src/models/blog.dto'
 import { Client } from '@/src/models/schema'
 import markdownToHtml from 'zenn-markdown-html'
 
 export const runtime = 'edge'
 export const revalidate = 10
 
-export async function generateStaticParams() {
-  const response: BlogList = await Client.get('/blogs', {
-    queries: {
-      populate: 'categories'
-    }
-  })
+// export async function generateStaticParams() {
+//   const response: BlogList = await Client.get('/blogs', {
+//     queries: {
+//       populate: 'categories'
+//     }
+//   })
 
-  return response.data.map((blog: Datum) => ({
-    slug: blog.documentId
-  }))
-}
+//   return response.data.map((blog: Datum) => ({
+//     slug: blog.documentId
+//   }))
+// }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

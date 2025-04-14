@@ -17,13 +17,13 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className='bg-white min-h-screen flex flex-col pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white'>
-        <section className='mx-auto w-full flex-1 px-4 sm:px-6 xl:max-w-7xl xl:px-0'>
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <section className='mx-auto w-full flex-1 px-4 sm:px-6 xl:max-w-7xl xl:px-0'>
             <Header />
             {children}
-          </ThemeProvider>
-        </section>
-        <Footer />
+          </section>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

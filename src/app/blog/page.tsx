@@ -9,6 +9,8 @@ import { Client } from '@/src/models/schema'
 //   </PaginationItem>
 // )
 
+export const revalidate = 10
+
 export default async function Page() {
   const response: BlogList = await Client.get('/blogs', {
     queries: {

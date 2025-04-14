@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "generate": "bunx openapi-zod-client https://cms.tkgstrator.work/openapi.json --template default.hbs --base-url https://cms.tkgstrator.work --no-with-alias --strict-objects --with-description --export-schemas --export-types --api-client-name Client -o ./src/models/schema.ts"
+    "generate": "bunx openapi-zod-client https://cms.tkgstrator.work/openapi.json --template default.hbs --base-url https://cms.tkgstrator.work/api/ --no-with-alias --strict-objects --with-description --export-schemas --export-types --api-client-name Client -o ./src/models/schema.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",

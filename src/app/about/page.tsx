@@ -1,3 +1,4 @@
+import { Client } from '@/src/models/schema'
 import { Space_Grotesk } from 'next/font/google'
 
 const grotesk = Space_Grotesk({
@@ -6,7 +7,9 @@ const grotesk = Space_Grotesk({
   weight: ['400', '500', '600', '700']
 })
 
-export default function Page() {
+export default async function Page() {
+  const res = await Client.get('/about')
+  console.log(res)
   return (
     <>
       <div className={grotesk.className}>

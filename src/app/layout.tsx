@@ -5,7 +5,7 @@ import { ThemeProvider } from 'next-themes'
 import Header from '../components/Header'
 
 export const metadata: Metadata = {
-  title: 'Underground',
+  title: 'Under+Ground',
   description: 'NextJS+MicroCMS+TailwindCSS+Cusdis'
 }
 

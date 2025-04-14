@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "generate": "bunx openapi-zod-client https://cms.tkgstrator.work/documentation --template default.hbs --base-url http://localhost:1337 --no-with-alias --strict-objects --with-description --export-schemas --export-types --api-client-name PenMatch -o ./src/models/schema.ts"
+    "generate": "bunx openapi-zod-client https://cms.tkgstrator.work/openapi.json --template default.hbs --base-url https://cms.tkgstrator.work --no-with-alias --strict-objects --with-description --export-schemas --export-types --api-client-name Client -o ./src/models/schema.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",
@@ -19,6 +19,7 @@
     "@types/node": "^22.14.1",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
+    "@zodios/core": "^10.9.6",
     "cheerio": "^1.0.0",
     "date-fns-tz": "^3.2.0",
     "encoding": "^0.1.13",

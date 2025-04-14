@@ -1,4 +1,5 @@
 'use client'
+import { format } from 'date-fns'
 import type React from 'react'
 import { useEffect, useState } from 'react'
 
@@ -19,7 +20,7 @@ export const ReactTerminal: React.FC = () => {
         "New release '24.04.2 LTS' available.",
         "Run 'do-release-upgrade' to upgrade to it.",
         '',
-        'Last login: Sun Mar 30 08:26:48 2025 from 172.18.0.7'
+        `Last login: ${format(new Date(), 'EEE MMM dd HH:mm:ss yyyy')} from 172.18.0.7`
       ]
       setMessage(lines.join('\n'))
     }, 3000)

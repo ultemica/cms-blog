@@ -5,14 +5,15 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": [
-      "src/models/schema.ts"
-    ],
+    "ignore": ["src/models/schema.ts"],
     "rules": {
       "recommended": true,
       "correctness": {
         "noUnusedImports": "warn",
         "noUnusedVariables": "warn"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off"
       },
       "a11y": {}
     }
@@ -20,9 +21,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [
-      "src/models/schema.ts"
-    ],
+    "ignore": ["src/models/schema.ts"],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,

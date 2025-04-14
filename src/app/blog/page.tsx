@@ -1,20 +1,13 @@
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationNext,
-  PaginationPrevious
-} from '@/components/ui/pagination'
+import { Pagination, PaginationContent, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
 import BlogItem from '@/src/components/BlogItem'
 import type { BlogList } from '@/src/models/blog.dto'
 import { Client } from '@/src/models/schema'
-import Link from 'next/link'
 
-const PaginationLink = ({ ...props }) => (
-  <PaginationItem>
-    <Link href={props.href}>{props.children}</Link>
-  </PaginationItem>
-)
+// const PaginationLink = ({ ...props }) => (
+//   <PaginationItem>
+//     <Link href={props.href}>{props.children}</Link>
+//   </PaginationItem>
+// )
 
 export default async function Page() {
   const response: BlogList = await Client.get('/blogs', {

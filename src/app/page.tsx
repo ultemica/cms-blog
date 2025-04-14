@@ -26,13 +26,16 @@ export default async function Page() {
   ]
 
   return (
-    <main className='font-mono bg-gray-900 text-gray-200 p-4'>
-      {lines.map((line, i) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-        <p key={i} style={{ margin: 0 }}>
-          {line}
-        </p>
-      ))}
-    </main>
+    <>
+      <div>Welcome to the Under+Ground</div>
+      <main className='font-mono bg-gray-900 text-gray-200 p-4'>
+        {lines.map((line, i) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+          <p key={i} style={{ margin: 0 }}>
+            {line}
+          </p>
+        ))}
+      </main>
+    </>
   )
 }

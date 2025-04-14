@@ -4,7 +4,7 @@ import type React from 'react'
 import { useEffect, useState } from 'react'
 
 export const ReactTerminal: React.FC = () => {
-  const [message, setMessage] = useState('Connecting...')
+  const [message, setMessage] = useState('root@ubuntu:~# ssh root@localhost -i ~./.ssh/id_ed25519')
   const [blink, setBlink] = useState(true)
 
   useEffect(() => {
@@ -20,10 +20,11 @@ export const ReactTerminal: React.FC = () => {
         "New release '24.04.2 LTS' available.",
         "Run 'do-release-upgrade' to upgrade to it.",
         '',
-        `Last login: ${format(new Date(), 'EEE MMM dd HH:mm:ss yyyy')} from 172.18.0.7`
+        `Last login: ${format(new Date(), 'EEE MMM dd HH:mm:ss yyyy')} from 172.18.0.7`,
+        'root@ubuntu:~#'
       ]
       setMessage(lines.join('\n'))
-    }, 3000)
+    }, 1500)
     return () => {
       clearTimeout(timer)
       clearInterval(blinkInterval)

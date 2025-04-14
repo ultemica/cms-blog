@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import type React from 'react'
 import { useEffect, useState } from 'react'
 
-export const ReactTerminal: React.FC = () => {
+const ReactTerminal: React.FC = () => {
   const [message, setMessage] = useState<string>('')
   const lines = [
     'Welcome to Under+Ground 22.04.5 LTS (GNU/Linux 6.8.0-52-generic x86_64)',

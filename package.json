@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "deploy": "bun wranger pages deploy"
+    "deploy": "bun wranger pages deploy build/static"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

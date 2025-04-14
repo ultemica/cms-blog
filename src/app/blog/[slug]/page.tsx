@@ -2,6 +2,7 @@ import type { BlogList, Datum } from '@/src/models/blog.dto'
 import { Client } from '@/src/models/schema'
 import markdownToHtml from 'zenn-markdown-html'
 
+export const runtime = 'edge'
 export const revalidate = 10
 
 export async function generateStaticParams() {

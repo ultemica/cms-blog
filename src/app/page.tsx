@@ -30,7 +30,11 @@ export const ReactTerminal: React.FC = () => {
     }
   }, [])
 
-  return <pre>{message.startsWith('Connecting') ? (blink ? 'Connecting...' : 'Connecting') : message}</pre>
+  return (
+    <div className='font-mono p-4 bg-gray-900 text-gray-200 overflow-auto'>
+      <pre>{message.startsWith('Connecting') ? (blink ? 'Connecting...' : 'Connecting') : message}</pre>
+    </div>
+  )
 }
 
 export default async function Page() {

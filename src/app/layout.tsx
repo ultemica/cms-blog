@@ -16,14 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className='bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white'>
-        <section className='mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-7xl xl:px-0'>
+      <body className='bg-white min-h-screen flex flex-col pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white'>
+        <section className='mx-auto w-full flex-1 px-4 sm:px-6 xl:max-w-7xl xl:px-0'>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <Header />
             {children}
-            <Footer />
           </ThemeProvider>
         </section>
+        <Footer />
       </body>
     </html>
   )

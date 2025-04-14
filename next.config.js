@@ -2,8 +2,8 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: 'build',
-  output: process.env.NEXT_OUTPUT || 'standalone',
+  // distDir: 'build',
+  // output: process.env.NEXT_OUTPUT || 'standalone',
   images: {
     remotePatterns: [new URL('https://cdn.bsky.app/**')]
   }

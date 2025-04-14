@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "deploy": "bun wrangler pages deploy build/static --project-name cms-blog"
+    "deploy": "bun wrangler pages deploy build --project-name cms-blog"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

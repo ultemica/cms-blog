@@ -1,4 +1,15 @@
-export default function Page() {
+import { Client } from '@/src/models/schema'
+
+export async function generateStaticParams() {
+  const response = await Client.get('/categories', {})
+
+  return response.data.map((category) => ({
+    slug: category.documentId
+  }))
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: <explanation>
+export default function Page({ params }: { params: Promise<{ slug: string }> }) {
   return (
     <>
       <div className='min-h-screen flex flex-col items-center justify-center'>

@@ -2,6 +2,7 @@ import { Zodios, makeApi } from '@zodios/core'
 import { z } from 'zod'
 import { AboutSchema } from './about.dto'
 import { BlogListSchema, BlogSchema, DatumSchema } from './blog.dto'
+import { CategorySchema } from './category.dto'
 
 const api = makeApi([
   {
@@ -32,6 +33,11 @@ const api = makeApi([
     method: 'get',
     path: '/about',
     response: AboutSchema
+  },
+  {
+    method: 'get',
+    path: '/categories',
+    response: CategorySchema
   }
 ])
 

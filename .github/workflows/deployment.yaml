@@ -25,5 +25,5 @@ jobs:
       - name: Build NextJS
         run: bun run build
 
-      - name: Deploy to Cloudflare Pages
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+      # - name: Deploy to Cloudflare Pages
+      #   run:

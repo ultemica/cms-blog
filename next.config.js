@@ -3,7 +3,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: 'build',
-  // output: 'export',
+  output: process.env.NEXT_OUTPUT || 'standalone',
   images: {
     remotePatterns: [new URL('https://cdn.bsky.app/**')]
   }

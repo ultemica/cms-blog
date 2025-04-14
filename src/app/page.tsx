@@ -1,32 +1,38 @@
-function FancySection() {
-  return (
-    <section
-      style={{
-        padding: '1rem',
-        backgroundColor: '#000',
-        margin: '1rem 0',
-        border: '1px solid #33ff33'
-      }}
-    >
-      <h2 style={{ color: '#33ff33' }}>terminal@host:~</h2>
-      <p style={{ color: '#33ff33' }}>Welcome to the fancy terminal section.</p>
-    </section>
-  )
+import { format } from 'date-fns'
+
+async function getIP() {
+  try {
+    const res = await fetch('https://api.ipify.org?format=json')
+    const data = await res.json()
+    return data.ip
+  } catch {
+    return '127.0.0.1'
+  }
 }
 
 export default async function Page() {
+  const ip = await getIP()
+  const now = new Date()
+  const loginTime = format(now, 'EEE MMM d HH:mm:ss yyyy')
+  const lines = [
+    'Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-52-generic x86_64)',
+    '',
+    ' * Documentation:  https://help.ubuntu.com',
+    ' * Management:     https://landscape.canonical.com',
+    ' * Support:        https://ubuntu.com/advantage',
+    '',
+    `Last login: ${loginTime} from ${ip}`,
+    'root@ubuntu: ~#'
+  ]
+
   return (
-    <main
-      style={{
-        backgroundColor: '#000',
-        color: '#33ff33',
-        fontFamily: 'monospace',
-        padding: '2rem'
-      }}
-    >
-      <h1>Welcome, Engineer!</h1>
-      <p>Here’s your cool dev environment.</p>
-      <FancySection />
+    <main className='font-mono bg-gray-900 text-gray-200 p-4'>
+      {lines.map((line, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+        <p key={i} style={{ margin: 0 }}>
+          {line}
+        </p>
+      ))}
     </main>
   )
 }

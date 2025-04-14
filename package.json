@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky",
-    "generate": "bunx openapi-zod-client https://cms.tkgstrator.work/openapi.json --template default.hbs --base-url https://cms.tkgstrator.work/api/ --no-with-alias --strict-objects --with-description --with-docs --api-client-name Client -o ./src/models/schema.ts"
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",

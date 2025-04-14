@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import type React from 'react'
 
@@ -26,7 +27,7 @@ const Header: React.FC = () => {
 
   return (
     <header className='flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'>
-      <a className='break-words' aria-label='Under+Ground' href='/'>
+      <Link className='break-words' aria-label='Under+Ground' href='/'>
         <div className='flex items-center justify-between'>
           <div className='mr-3'>
             {/* Logo SVG */}
@@ -70,52 +71,34 @@ const Header: React.FC = () => {
           </div>
           <div className='hidden h-6 text-2xl font-semibold sm:block'>Under+Ground</div>
         </div>
-      </a>
+      </Link>
       <div className='flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6'>
-        <div className='no-scrollbar hidden max-w-40 items-center gap-x-4 overflow-x-auto sm:flex md:max-w-72 lg:max-w-96'>
-          <a
+        <div className='no-scrollbar hidden items-center gap-x-4 overflow-x-auto sm:flex'>
+          <Link
             className='hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100'
             href='/blog'
           >
             Blog
-          </a>
-          <a
+          </Link>
+          <Link
             className='hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100'
-            href='/tags'
+            href='/categories'
           >
-            Tags
-          </a>
-          <a
+            Categories
+          </Link>
+          <Link
             className='hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100'
             href='/projects'
           >
             Projects
-          </a>
-          <a
+          </Link>
+          <Link
             className='hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100'
             href='/about'
           >
             About
-          </a>
+          </Link>
         </div>
-        {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-        <button aria-label='Search'>
-          {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth='1.5'
-            stroke='currentColor'
-            className='hover:text-primary-500 dark:hover:text-primary-400 h-6 w-6 text-gray-900 dark:text-gray-100'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
-            />
-          </svg>
-        </button>
         <div className='flex items-center'>
           <div className='relative inline-block text-left'>
             <div className='hover:text-primary-500 dark:hover:text-primary-400 flex items-center justify-center'>

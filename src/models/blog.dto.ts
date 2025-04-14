@@ -1,11 +1,22 @@
 import * as z from 'zod'
 
+export const CategorySchema = z.object({
+  id: z.number(),
+  documentId: z.string(),
+  name: z.string(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
+  publishedAt: z.coerce.date()
+})
+export type Category = z.infer<typeof CategorySchema>
+
 export const DatumSchema = z.object({
   id: z.number(),
   documentId: z.string(),
   title: z.string(),
   description: z.string(),
   content: z.string(),
+  categories: z.array(CategorySchema),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   publishedAt: z.coerce.date()

@@ -13,10 +13,7 @@ const config: Config = {
             }
           }
         }
-      }),
-      fontFamily: {
-        grotesk: ['Space Grotesk', 'sans-serif']
-      }
+      })
     }
   },
   plugins: [require('@tailwindcss/typography')]

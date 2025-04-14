@@ -1,0 +1,13 @@
+.neon-text {
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14;
+}
+
+.hover\:shadow-neon:hover {
+  box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
+}
+
+body {
+  background-color: #0d0d0d; /* Dark background for hacker lab feel */
+  color: #39ff14; /* Neon green text */
+  font-family: 'Courier New', Courier, monospace; /* Terminal-like font */
+}

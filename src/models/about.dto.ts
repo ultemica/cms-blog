@@ -8,6 +8,7 @@ export const DataSchema = z.object({
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   publishedAt: z.coerce.date(),
+  thumbnail: z.string().url(),
   description: z.string()
 })
 export type Data = z.infer<typeof DataSchema>

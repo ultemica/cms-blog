@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import 'zenn-content-css'
 import './globals.css'
 import Footer from '@/src/components/Footer'
 import { ThemeProvider } from 'next-themes'

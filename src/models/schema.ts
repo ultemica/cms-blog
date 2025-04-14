@@ -7,11 +7,25 @@ const api = makeApi([
   {
     method: 'get',
     path: '/blogs',
+    parameters: [
+      {
+        name: 'populate',
+        type: 'Query',
+        schema: z.string().optional()
+      }
+    ],
     response: BlogListSchema
   },
   {
     method: 'get',
     path: '/blogs/:id',
+    parameters: [
+      {
+        name: 'populate',
+        type: 'Query',
+        schema: z.string().optional()
+      }
+    ],
     response: BlogSchema
   },
   {

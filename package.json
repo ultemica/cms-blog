@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "generate": "bunx openapi-zod-client https://cms.tkgstrator.work/openapi.json --template default.hbs --base-url https://cms.tkgstrator.work/api/ --no-with-alias --strict-objects --with-description --export-schemas --export-types --api-client-name Client -o ./src/models/schema.ts"
+    "generate": "bunx openapi-zod-client https://cms.tkgstrator.work/openapi.json --template default.hbs --base-url https://cms.tkgstrator.work/api/ --no-with-alias --strict-objects --with-description --with-docs --api-client-name Client -o ./src/models/schema.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",
@@ -31,7 +31,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "tailwindcss": "^4.1.3"
+    "tailwindcss": "^4.1.3",
+    "zenn-markdown-html": "^0.1.158"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

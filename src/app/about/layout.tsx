@@ -1,14 +1,17 @@
+import type { About } from '@/src/models/about.dto'
+import { Client } from '@/src/models/schema'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsTwitterX } from 'react-icons/bs'
 import { BsGithub } from 'react-icons/bs'
 import { FaBluesky } from 'react-icons/fa6'
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const response: About = await Client.get('/about')
   return (
     <>
       <div className='divide-y divide-gray-200 dark:divide-gray-700'>
@@ -26,9 +29,9 @@ export default function RootLayout({
               height={192}
               className='h-48 w-48 rounded-full'
             />
-            <h3 className='pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight'>{'tkgstrator'}</h3>
+            <h3 className='pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight'>{response.data.name}</h3>
             <div className='text-gray-500 dark:text-gray-400'>{'Rakunan Senior & Junior High School'}</div>
-            <div className='text-gray-500 dark:text-gray-400'>{'Quantumleap'}</div>
+            <div className='text-gray-500 dark:text-gray-400'>{response.data.organization}</div>
             <div className='flex space-x-3 pt-6'>
               <Link href='https://bsky.app/profile/tkgstrator.work'>
                 <FaBluesky size={'2rem'} />

@@ -75,10 +75,7 @@ export type {{@key}} = z.infer<typeof {{@key}}>;
   {{/each}}
   ]);
 
-  const baseUrl = typeof window === 'undefined'
-  ? 'https://cms.tkgstrator.work' // サーバーからアクセスする用
-  : 'http://localhost:1337'
-  export const {{options.apiClientName}} = new Zodios(baseUrl, endpoints);
+  export const {{options.apiClientName}} = new Zodios({{#if options.baseUrl}}"{{options.baseUrl}}", {{/if}}endpoints);
 
   export function createApiClient(baseUrl: string, options?: ZodiosOptions) {
   return new Zodios(baseUrl, endpoints, options);

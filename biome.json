@@ -5,7 +5,9 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": [],
+    "ignore": [
+      "src/models/schema.ts"
+    ],
     "rules": {
       "recommended": true,
       "correctness": {
@@ -18,7 +20,9 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [],
+    "ignore": [
+      "src/models/schema.ts"
+    ],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,

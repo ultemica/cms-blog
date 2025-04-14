@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react'
 
 export const ReactTerminal: React.FC = () => {
   const [message, setMessage] = useState('Connecting...')
+  const [blink, setBlink] = useState(true)
+
   useEffect(() => {
+    const blinkInterval = setInterval(() => setBlink((prev) => !prev), 500)
     const timer = setTimeout(() => {
       const lines = [
-        'Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-52-generic x86_64)',
+        'Welcome to Under+Ground 22.04.5 LTS (GNU/Linux 6.8.0-52-generic x86_64)',
         '',
         ' * Documentation:  https://help.ubuntu.com',
         ' * Management:     https://landscape.canonical.com',
@@ -20,9 +23,13 @@ export const ReactTerminal: React.FC = () => {
       ]
       setMessage(lines.join('\n'))
     }, 3000)
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      clearInterval(blinkInterval)
+    }
   }, [])
-  return <pre>{message}</pre>
+
+  return <pre>{message.startsWith('Connecting') ? (blink ? 'Connecting...' : 'Connecting') : message}</pre>
 }
 
 export default async function Page() {

@@ -1,3 +1,4 @@
+'use client'
 import type {} from '@/src/models/blog.dto'
 import { Client } from '@/src/models/schema'
 import markdownToHtml from 'zenn-markdown-html'
@@ -16,14 +17,6 @@ export const revalidate = 10
 //     slug: blog.documentId
 //   }))
 // }
-
-export const getStaticProps = (async (context) => {
-  const res = await fetch('https://api.github.com/repos/vercel/next.js')
-  const repo = await res.json()
-  return { props: { repo } }
-}) satisfies GetStaticProps<{
-  repo: Repo
-}>
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

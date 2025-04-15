@@ -40,8 +40,26 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           </div>
         </div>
       </header>
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-      <div className='znc' dangerouslySetInnerHTML={{ __html: html }} />
+      <div className='m-w-6xl mx-auto px-[40px]'>
+        <div className='block'>
+          <div className='relative'>
+            <div className='flex space-between'>
+              <section className='xl:w-[calc(100%-330px)] w-full'>
+                <div className='bg-[var(--c-bg-base)] border-[1px] border-[var(--c-neutral-border-lighter)] rounded-[var(--rounded-xs)] py-[40px] text-[16px]'>
+                  <div className='m-w-4xl px-[40px]'>
+                    <div
+                      className='znc'
+                      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+                      dangerouslySetInnerHTML={{ __html: html }}
+                    />
+                  </div>
+                </div>
+              </section>
+              {/* <section className=''></section> */}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

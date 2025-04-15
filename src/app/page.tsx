@@ -32,7 +32,7 @@ const ReactTerminal: React.FC = () => {
     return () => clearInterval(intervalId)
   }, [])
   return (
-    <div className='font-mono p-4 bg-gray-900 text-gray-200 overflow-auto'>
+    <div className='font-mono p-4 bg-gray-900 text-gray-200 overflow-auto max-w-4xl m-auto'>
       <pre>{message}</pre>
     </div>
   )

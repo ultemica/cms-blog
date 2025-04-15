@@ -26,7 +26,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className='flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'>
+    <header className='flex items-center w-full bg-[#EDE8F7] dark:bg-gray-950 justify-between py-10'>
       <Link className='break-words' aria-label='Under+Ground' href='/'>
         <div className='flex items-center justify-between'>
           <div className='mr-3'>

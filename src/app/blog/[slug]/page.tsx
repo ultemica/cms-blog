@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <div>
-      <header className='pt-[3.4rem] pb-[3.2rem] px-0 text-center'>
+      <header className='pt-[0.0rem] pb-[3.2rem] px-0 text-center'>
         <div className='m-w-6xl mx-auto px-[40px]'>
           <div className='relative'>
             <h1 className='inline-block max-w-[780px] my-[1.2rem] text-[33px] text-left'>
@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <div className='relative'>
             <div className='flex space-between'>
               <section className='xl:w-[calc(100%-330px)] w-full'>
-                <div className='bg-[var(--c-bg-base)] border-[1px] border-[var(--c-neutral-border-lighter)] rounded-[var(--rounded-xs)] py-[40px] text-[16px]'>
+                <div className='border-[1px] py-[40px] text-[16px]'>
                   <div className='m-w-4xl px-[40px]'>
                     <div
                       className='znc'

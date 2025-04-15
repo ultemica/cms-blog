@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <div className='relative'>
             <div className='flex space-between'>
               <section className='xl:w-[calc(100%-330px)] w-full'>
-                <div className='border-[1px] py-[40px] text-[16px]'>
+                <div className='border-[1px] py-[40px] text-[16px] bg-white'>
                   <div className='m-w-4xl px-[40px]'>
                     <div
                       className='znc'

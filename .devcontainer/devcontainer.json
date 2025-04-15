@@ -1,5 +1,5 @@
 {
-  "name": "NextJS+Blog",
+  "name": "Under+Ground",
   "dockerComposeFile": ["docker-compose.yaml"],
   "service": "node",
   "workspaceFolder": "/home/vscode/app",

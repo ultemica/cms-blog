@@ -27,7 +27,7 @@ const Header: React.FC = () => {
 
   return (
     <header className='flex items-center w-full bg-[#EDE8F7] dark:bg-gray-950 justify-between py-10'>
-      <Link className='break-words' aria-label='Under+Ground' href='/'>
+      <Link className='break-words' aria-label='Under→Ground' href='/'>
         <div className='flex items-center justify-between'>
           <div className='mr-3'>
             {/* Logo SVG */}

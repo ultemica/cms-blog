@@ -7,7 +7,11 @@ import Header from '../components/Header'
 
 export const metadata: Metadata = {
   title: 'Under+Ground',
-  description: 'NextJS+MicroCMS+TailwindCSS+Cusdis'
+  description: 'NextJS+MicroCMS+TailwindCSS+Cusdis',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png'
+  }
 }
 
 export default function RootLayout({

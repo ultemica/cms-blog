@@ -14,7 +14,10 @@ export const revalidate = 10
 export default async function Page() {
   const response: BlogList = await Client.get('/blogs', {
     queries: {
-      populate: 'categories'
+      populate: 'categories',
+      sort: 'publishedAt:desc',
+      'pagination[page]': 0,
+      'pagination[pageSize]': 10
     }
   })
   return (

@@ -23,9 +23,15 @@ export default async function Page() {
   return (
     <>
       <h1 className='text-4xl font-bold mb-4'>Blog</h1>
-      {response.data.map((item) => {
-        return <BlogItem key={item.id} item={item} />
-      })}
+      <ul className='space-y-4'>
+        {response.data.map((item) => {
+          return (
+            <li key={item.id}>
+              <BlogItem item={item} />
+            </li>
+          )
+        })}
+      </ul>
       <Pagination>
         <PaginationContent>
           <PaginationPrevious href='#' />

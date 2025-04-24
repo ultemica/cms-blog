@@ -21,7 +21,7 @@ export default async function Page() {
     }
   })
   return (
-    <>
+    <div className='px-4 md:px-8'>
       <h1 className='text-4xl font-bold mb-4'>Blog</h1>
       <ul className='space-y-4'>
         {response.data.map((item) => {
@@ -38,6 +38,6 @@ export default async function Page() {
           <PaginationNext href='#' />
         </PaginationContent>
       </Pagination>
-    </>
+    </div>
   )
 }

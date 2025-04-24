@@ -1,8 +1,9 @@
 'use client'
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { Code2, FolderGit2, Info, ListTodo, TerminalSquare } from 'lucide-react'
+import { themeAtom } from '@/src/atoms/theme.atom'
+import { useAtom } from 'jotai/react'
+import { Code2, FolderGit2, Info, ListTodo, Moon, Sun, TerminalSquare } from 'lucide-react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import type React from 'react'
 
 const MobileMenu: React.FC = () => {
@@ -10,10 +11,10 @@ const MobileMenu: React.FC = () => {
     <Dialog>
       <DialogTrigger asChild>
         <button aria-label='Toggle Menu' type='button'>
-          <TerminalSquare className='h-7 w-7 text-gray-700 dark:text-gray-300' />
+          <TerminalSquare className='h-7 w-7' />
         </button>
       </DialogTrigger>
-      <DialogContent className='sm:hidden bg-gray-50 dark:bg-gray-900 p-8 border border-gray-400 dark:border-gray-700 rounded-none [&>button:last-child]:hidden'>
+      <DialogContent className='md:hidden bg-gray-50 dark:bg-gray-900 p-8 border border-gray-400 dark:border-gray-700 rounded-none [&>button:last-child]:hidden'>
         <DialogClose asChild>
           <button
             aria-label='Close'
@@ -69,25 +70,12 @@ const MobileMenu: React.FC = () => {
 }
 
 const Header: React.FC = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
-
-  useEffect(() => {
-    const localTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-    if (localTheme) {
-      setTheme(localTheme)
-      document.documentElement.classList.toggle('dark', localTheme === 'dark')
-    } else {
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      setTheme(systemDark ? 'dark' : 'light')
-      document.documentElement.classList.toggle('dark', systemDark)
-    }
-  }, [])
+  const [theme, setTheme] = useAtom(themeAtom)
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
     setTheme(newTheme)
     document.documentElement.classList.toggle('dark', newTheme === 'dark')
-    localStorage.setItem('theme', newTheme)
   }
 
   return (
@@ -97,8 +85,8 @@ const Header: React.FC = () => {
           <span className='text-2xl font-semibold'>Under+Ground</span>
         </div>
       </Link>
-      <div className='flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6'>
-        <div className='no-scrollbar hidden items-center gap-x-4 overflow-x-auto sm:flex'>
+      <div className='flex items-center space-x-4 leading-5'>
+        <div className='no-scrollbar hidden items-center gap-x-4 overflow-x-auto md:flex'>
           <Link
             className='hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100'
             href='/blog'
@@ -128,15 +116,7 @@ const Header: React.FC = () => {
           <div className='relative inline-block text-left'>
             <div className='hover:text-primary-500 dark:hover:text-primary-400 flex items-center justify-center'>
               <button aria-label='Theme switcher' type='button' onClick={toggleTheme}>
-                {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 20 20'
-                  fill='currentColor'
-                  className='group:hover:text-gray-100 h-6 w-6'
-                >
-                  <path d='M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z' />
-                </svg>
+                {theme === 'dark' ? <Sun className='h-7 w-7' /> : <Moon className='h-7 w-7' />}
               </button>
             </div>
           </div>

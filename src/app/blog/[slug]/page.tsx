@@ -31,10 +31,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   return (
     <div>
       <header className='pt-[0.0rem] pb-[3.2rem] px-0 text-center'>
-        <div className='m-w-6xl mx-auto px-[40px]'>
+        <div className='m-w-6xl mx-auto px-[25px] md:px-[40px]'>
           <div className='relative'>
-            <h1 className='inline-block max-w-[780px] my-[1.2rem] text-[33px] text-left'>
-              <span className='text-[0.84em]'>{response.data.title}</span>
+            <h1 className='inline-block max-w-[780px] my-[1.2rem] md:text-[33px] text-left text-[24px]'>
+              <span className='md:text-[0.84em]'>【Cloudflare】Workers から Prisma で D1 を操作する</span>
             </h1>
             <p className='text-gray-500 dark:text-gray-400'>{response.data.publishedAt.toDateString()}</p>
           </div>

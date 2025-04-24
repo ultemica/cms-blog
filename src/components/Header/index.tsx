@@ -1,7 +1,5 @@
 'use client'
-// shadcn/uiのDialogを利用
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-// 追加: shadcn/uiのicons(lucide-react)をインポート
 import { Code2, FolderGit2, Info, ListTodo, TerminalSquare } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -16,7 +14,6 @@ const MobileMenu: React.FC = () => {
         </button>
       </DialogTrigger>
       <DialogContent className='sm:hidden bg-gray-50 dark:bg-gray-900 p-8 border border-gray-400 dark:border-gray-700 rounded-none [&>button:last-child]:hidden'>
-        {/* Geeky Custom Close Button */}
         <DialogClose asChild>
           <button
             aria-label='Close'
@@ -96,48 +93,8 @@ const Header: React.FC = () => {
   return (
     <header className='flex items-center w-full bg-[#EDE8F7] dark:bg-gray-950 justify-between py-10'>
       <Link className='break-words' aria-label='Under→Ground' href='/'>
-        <div className='flex items-center justify-between'>
-          <div className='mr-3 hidden sm:block'>
-            {/* Logo SVG */}
-            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              xmlnsXlink='http://www.w3.org/1999/xlink'
-              width='53.87'
-              height='43.61'
-              viewBox='344.564 330.278 111.737 91.218'
-            >
-              <defs>
-                <linearGradient
-                  id='logo_svg__b'
-                  x1='420.97'
-                  x2='420.97'
-                  y1='331.28'
-                  y2='418.5'
-                  gradientUnits='userSpaceOnUse'
-                >
-                  <stop offset='0%' style={{ stopColor: '#06b6d4', stopOpacity: 1 }} />
-                  <stop offset='100%' style={{ stopColor: '#67e8f9', stopOpacity: 1 }} />
-                </linearGradient>
-                <linearGradient
-                  id='logo_svg__d'
-                  x1='377.89'
-                  x2='377.89'
-                  y1='331.28'
-                  y2='418.5'
-                  gradientUnits='userSpaceOnUse'
-                >
-                  <stop offset='0%' style={{ stopColor: '#06b6d4', stopOpacity: 1 }} />
-                  <stop offset='100%' style={{ stopColor: '#67e8f9', stopOpacity: 1 }} />
-                </linearGradient>
-                <path id='logo_svg__a' d='M453.3 331.28v28.57l-64.66 58.65v-30.08z' />
-                <path id='logo_svg__c' d='M410.23 331.28v28.57l-64.67 58.65v-30.08z' />
-              </defs>
-              <use xlinkHref='#logo_svg__a' fill='url(#logo_svg__b)' />
-              <use xlinkHref='#logo_svg__c' fill='url(#logo_svg__d)' />
-            </svg>
-          </div>
-          <div className='hidden h-6 text-2xl font-semibold sm:block'>Under+Ground</div>
+        <div className='flex items-center justify-center h-6'>
+          <span className='text-2xl font-semibold'>Under+Ground</span>
         </div>
       </Link>
       <div className='flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6'>

@@ -1,7 +1,12 @@
 import {} from '@/styles/font'
 import type { AppBskyFeedDefs } from '@atproto/api'
 import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
 import { fetchBlueskyPosts } from './bluesky'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 export const revalidate = 10
 
@@ -28,7 +33,7 @@ function FeedPost({ post }: { post: AppBskyFeedDefs.FeedViewPost }) {
       )}
       <div className='mb-2 whitespace-pre-wrap text-[16px] text-[#222] dark:text-[#e0e0e0]'>{text}</div>
       <div className='text-[16px] text-[#005fa3] dark:text-[#38c8ff] text-right font-bold tracking-[1px] mt-1'>
-        {createdAt ? dayjs(createdAt).format('YYYY/MM/DD HH:mm:ss') : ''}
+        {createdAt ? `${dayjs.utc(createdAt).tz('Asia/Tokyo').format('YYYY/MM/DD HH:mm:ss')} (JST)` : ''}
       </div>
     </div>
   )
@@ -43,7 +48,7 @@ export default async function Page() {
       <>
         <main className='font-[pixelMplus10] text-[16px] max-w-[540px] mx-auto mt-8 mb-8 bg-[#181818] dark:bg-[#181818] bg-[#fff] text-[#e0e0e0] dark:text-[#e0e0e0] text-[#222] min-h-screen p-5 rounded-none border-[4px] border-double border-[#b8b8b8] dark:border-[#b8b8b8] border-[#bbb] [font-smooth:none] select-none'>
           <h2 className='font-bold text-[16px] mb-[18px] tracking-[1px] text-[#38c8ff] border-b-2 border-[#b8b8b8] pb-[6px] bg-[#282828] dark:bg-[#282828] bg-[#e3f6fd] pl-2 pt-1 pr-2 dark:text-[#38c8ff] text-[#005fa3]'>
-            $ bluesky-cli timeline --user=tkgstrator.work
+            $ bluesky-cli timeline --user=tkgstrator --limit=10
           </h2>
           <div className='text-[16px] text-[#ff5959] bg-[#282828] p-3 rounded-none border-2 border-[#ff5959]'>
             # 投稿の取得に失敗しました（認証エラーまたはネットワークエラー）
@@ -57,7 +62,7 @@ export default async function Page() {
     <>
       <main className='font-[pixelMplus10] max-w-[540px] mx-auto mt-8 mb-8 bg-[#181818] dark:bg-[#181818] bg-[#fff] text-[#e0e0e0] dark:text-[#e0e0e0] text-[#222] min-h-screen p-5 rounded-none border-[4px] border-double border-[#b8b8b8] dark:border-[#b8b8b8] border-[#bbb] [font-smooth:none] select-none'>
         <h2 className='font-bold text-[16px] mb-[18px] tracking-[1px] text-[#38c8ff] border-b-2 border-[#b8b8b8] pb-[6px] bg-[#282828] dark:bg-[#282828] bg-[#e3f6fd] pl-2 pt-1 pr-2 dark:text-[#38c8ff] text-[#005fa3]'>
-          $ bluesky-cli timeline --user=tkgstrator.work
+          $ bluesky-cli timeline --user=tkgstrator --limit=10
         </h2>
         <div className='flex flex-col gap-[14px]'>
           {posts.length === 0 && (

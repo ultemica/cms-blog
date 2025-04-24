@@ -5,7 +5,11 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["src/models/schema.ts", "node_modules/**/*"],
+    "ignore": [
+      "src/models/schema.ts",
+      "src/components/ui/*",
+      "node_modules/**/*"
+    ],
     "rules": {
       "recommended": true,
       "correctness": {
@@ -21,7 +25,11 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": ["src/models/schema.ts", "node_modules/**/*"],
+    "ignore": [
+      "src/models/schema.ts",
+      "src/components/ui/*",
+      "node_modules/**/*"
+    ],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,

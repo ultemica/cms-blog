@@ -1,6 +1,6 @@
 'use client'
+import { themeAtom } from '@/atoms/theme.atom'
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { themeAtom } from '@/src/atoms/theme.atom'
 import { useAtom } from 'jotai/react'
 import { Code2, FolderGit2, Info, ListTodo, Moon, Sun, TerminalSquare } from 'lucide-react'
 import Link from 'next/link'

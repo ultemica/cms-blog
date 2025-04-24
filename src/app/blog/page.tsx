@@ -1,7 +1,7 @@
+import BlogItem from '@/components/BlogItem'
 import { Pagination, PaginationContent, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
-import BlogItem from '@/src/components/BlogItem'
-import type { BlogList } from '@/src/models/blog.dto'
-import { Client } from '@/src/models/schema'
+import type { BlogList } from '@/models/blog.dto'
+import { Client } from '@/models/schema'
 
 export const revalidate = 10
 

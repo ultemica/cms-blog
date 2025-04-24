@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import 'zenn-content-css'
 import './globals.css'
-import Footer from '@/src/components/Footer'
+import Footer from '@/components/Footer'
 import { ThemeProvider } from 'next-themes'
 import Background from '../components/Background'
 import Header from '../components/Header'
@@ -22,9 +22,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <head>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      </head>
       <body className='bg-[#EDE8F7] min-h-screen flex flex-col text-black antialiased dark:bg-gray-950 dark:text-white'>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <section className='mx-auto w-full flex-1 xl:max-w-7xl relative'>

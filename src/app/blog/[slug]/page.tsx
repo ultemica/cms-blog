@@ -1,5 +1,5 @@
-import type { BlogList, Datum } from '@/src/models/blog.dto'
-import { Client } from '@/src/models/schema'
+import type { BlogList, Datum } from '@/models/blog.dto'
+import { Client } from '@/models/schema'
 import markdownToHtml from 'zenn-markdown-html'
 
 export const revalidate = 10

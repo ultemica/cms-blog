@@ -1,5 +1,5 @@
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { Client } from '@/src/models/schema'
+import { Client } from '@/models/schema'
 import markdownToHtml from 'zenn-markdown-html'
 
 export default async function Page() {

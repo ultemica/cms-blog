@@ -1,4 +1,4 @@
-import type { Datum } from '@/src/models/blog.dto'
+import type { Datum } from '@/models/blog.dto'
 import Link from 'next/link'
 
 type Props = {

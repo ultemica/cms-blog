@@ -1,5 +1,5 @@
 'use client'
-import { themeAtom } from '@/src/atoms/theme.atom'
+import { themeAtom } from '@/atoms/theme.atom'
 import { useAtomValue } from 'jotai/react'
 import type React from 'react'
 import { useEffect, useRef } from 'react'

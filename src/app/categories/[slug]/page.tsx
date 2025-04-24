@@ -1,4 +1,4 @@
-import { Client } from '@/src/models/schema'
+import { Client } from '@/models/schema'
 
 export async function generateStaticParams() {
   const response = await Client.get('/categories', {})

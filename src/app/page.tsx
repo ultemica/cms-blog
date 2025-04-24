@@ -1,3 +1,4 @@
+'use server'
 import type { AppBskyFeedDefs } from '@atproto/api'
 import { fetchBlueskyPosts } from './bluesky'
 

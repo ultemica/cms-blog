@@ -3,12 +3,6 @@ import BlogItem from '@/src/components/BlogItem'
 import type { BlogList } from '@/src/models/blog.dto'
 import { Client } from '@/src/models/schema'
 
-// const PaginationLink = ({ ...props }) => (
-//   <PaginationItem>
-//     <Link href={props.href}>{props.children}</Link>
-//   </PaginationItem>
-// )
-
 export const revalidate = 10
 
 export default async function Page() {

@@ -33,20 +33,36 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <header className='pt-[0.0rem] pb-[3.2rem] px-0 text-center'>
         <div className='m-w-6xl mx-auto px-[40px]'>
           <div className='relative'>
-            <h1 className='inline-block max-w-[780px] my-[1.2rem] md:text-[33px] text-left text-[24px]'>
-              <span className=''>{response.data.title}</span>
+            <h1
+              className='inline-block max-w-[780px] my-[1.2rem] md:text-[33px] text-left text-[24px]'
+              style={{
+                fontSize: '33px'
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '0.84em'
+                }}
+              >
+                {response.data.title}
+              </span>
             </h1>
             <p className='text-gray-500 dark:text-gray-400'>{response.data.publishedAt.toDateString()}</p>
           </div>
         </div>
       </header>
-      <div className='m-w-6xl mx-auto px-[40px]'>
+      <div className='m-w-6xl mx-auto px-0 sm:px-[40px]'>
         <div className='block'>
           <div className='relative'>
             <div className='flex space-between'>
               <section className='xl:w-[calc(100%-330px)] w-full'>
-                <div className='border-[1px] py-[40px] text-[16px] bg-white dark:bg-gray-900'>
-                  <div className='m-w-4xl px-[40px]'>
+                <div className='py-[40px] bg-white dark:bg-gray-900'>
+                  <div
+                    className='m-w-4xl px-[14px] md:px-[40px]'
+                    style={{
+                      fontSize: '1.25em'
+                    }}
+                  >
                     <div
                       className='znc'
                       // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>

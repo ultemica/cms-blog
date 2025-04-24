@@ -79,7 +79,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className='flex items-center w-full bg-[#EDE8F7] dark:bg-gray-950 justify-between py-10'>
+    <header className='flex items-center w-full bg-[#EDE8F7] dark:bg-gray-950 justify-between px-4 md:px-8 py-6 md:py-10'>
       <Link className='break-words' aria-label='Under→Ground' href='/'>
         <div className='flex items-center justify-center h-6'>
           <span className='text-2xl font-semibold'>Under+Ground</span>

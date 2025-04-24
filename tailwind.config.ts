@@ -5,17 +5,11 @@ const config: Config = {
   content: ['./src/**/*.{tsx,ts,jsx,js}'],
   theme: {
     extend: {
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            p: {
-              marginTop: '1.25em'
-            }
-          }
-        }
-      })
+      fontSize: {
+        base: '16px',
+        lg: '20px'
+      }
     }
-  },
-  plugins: [require('@tailwindcss/typography')]
+  }
 }
 export default config

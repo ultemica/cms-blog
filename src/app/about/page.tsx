@@ -6,7 +6,7 @@ import markdownToHtml from 'zenn-markdown-html'
 export default async function Page() {
   const response = await Client.get('/about')
 
-  const html = markdownToHtml(response.data.description, {})
+  const html = markdownToHtml(response.data.content, {})
   return (
     <div className='px-4 md:px-8'>
       <h1 className='text-4xl font-bold mb-4'>About</h1>

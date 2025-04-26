@@ -9,7 +9,7 @@ export default async function Page() {
   const response: BlogList = await Client.get('/blogs', {
     queries: {
       populate: 'categories',
-      sort: 'publishedAt:desc',
+      sort: 'createdAt:desc',
       'pagination[page]': 0,
       'pagination[pageSize]': 10
     }

@@ -34,9 +34,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <div className='m-w-6xl mx-auto px-[40px]'>
           <div className='relative'>
             <h1
-              className='inline-block max-w-[780px] my-[1.2rem] md:text-[33px] text-left text-[24px]'
+              className='inline-block max-w-[780px] my-[1.2rem] md:text-[33px] text-[24px] text-center'
               style={{
-                fontSize: '33px'
+                fontSize: '33px',
+                width: '100%',
+                wordBreak: 'break-word'
               }}
             >
               <span

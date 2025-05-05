@@ -3,6 +3,7 @@ import type { AppBskyFeedDefs } from '@atproto/api'
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
+import Link from 'next/link'
 import { fetchBlueskyPosts } from './bluesky'
 
 dayjs.extend(utc)
@@ -46,6 +47,11 @@ export default async function Page() {
   } catch {
     return (
       <>
+        <div className='w-full flex justify-center mt-6'>
+          <Link href='/blog' className='text-[#38c8ff] dark:text-[#38c8ff] text-lg underline font-bold'>
+            記事はこちら
+          </Link>
+        </div>
         <main className='font-[pixelMplus10] text-[16px] max-w-[540px] mx-auto md:mt-8 md:mb-8 bg-[#181818] dark:bg-[#181818] bg-[#fff] text-[#e0e0e0] dark:text-[#e0e0e0] text-[#222] min-h-screen p-5 rounded-none border-[4px] border-double border-[#b8b8b8] dark:border-[#b8b8b8] border-[#bbb] [font-smooth:none] select-none'>
           <h2 className='font-bold text-[16px] mb-[18px] tracking-[1px] text-[#38c8ff] border-b-2 border-[#b8b8b8] pb-[6px] bg-[#282828] dark:bg-[#282828] bg-[#e3f6fd] pl-2 pt-1 pr-2 dark:text-[#38c8ff] text-[#005fa3]'>
             $ bluesky-cli timeline --user=tkgstrator --limit=10
@@ -60,6 +66,11 @@ export default async function Page() {
 
   return (
     <>
+      <div className='w-full flex justify-center mt-6 font-[pixelMplus10] pb-4'>
+        <Link href='/blog' className='text-[#38c8ff] dark:text-[#38c8ff] text-xl underline font-bold'>
+          記事はこちら
+        </Link>
+      </div>
       <main className='font-[pixelMplus10] max-w-[540px] mx-auto md:mt-8 md:mb-8 bg-[#181818] dark:bg-[#181818] bg-[#fff] text-[#e0e0e0] dark:text-[#e0e0e0] text-[#222] min-h-screen p-5 rounded-none border-[4px] border-double border-[#b8b8b8] dark:border-[#b8b8b8] border-[#bbb] [font-smooth:none] select-none'>
         <h2 className='font-bold text-[16px] mb-[18px] tracking-[1px] text-[#38c8ff] border-b-2 border-[#b8b8b8] pb-[6px] bg-[#282828] dark:bg-[#282828] bg-[#e3f6fd] pl-2 pt-1 pr-2 dark:text-[#38c8ff] text-[#005fa3]'>
           $ bluesky-cli timeline --user=tkgstrator --limit=10

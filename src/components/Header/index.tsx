@@ -25,11 +25,11 @@ const MobileMenu: React.FC = () => {
           </button>
         </DialogClose>
         <div className='flex flex-col'>
-          <div className='grid grid-cols-2 grid-rows-2 gap-8 mt-8 justify-items-center items-center'>
+          <div className='grid grid-cols-2 grid-rows-2 gap-4 mt-8 justify-items-center items-center'>
             <DialogClose asChild>
               <Link
                 href='/blog'
-                className='flex flex-col items-center justify-center w-28 h-28 border border-gray-400 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
+                className='flex flex-col items-center justify-center w-28 h-28 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
               >
                 <Code2 className='h-10 w-10 mb-2 text-gray-700 dark:text-gray-300' />
                 <span className='text-gray-800 dark:text-gray-200 text-base font-semibold'>Blog</span>
@@ -38,7 +38,7 @@ const MobileMenu: React.FC = () => {
             <DialogClose asChild>
               <Link
                 href='/categories'
-                className='flex flex-col items-center justify-center w-28 h-28 border border-gray-400 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
+                className='flex flex-col items-center justify-center w-28 h-28 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
               >
                 <ListTodo className='h-10 w-10 mb-2 text-gray-700 dark:text-gray-300' />
                 <span className='text-gray-800 dark:text-gray-200 text-base font-semibold'>Categories</span>
@@ -47,7 +47,7 @@ const MobileMenu: React.FC = () => {
             <DialogClose asChild>
               <Link
                 href='/projects'
-                className='flex flex-col items-center justify-center w-28 h-28 border border-gray-400 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
+                className='flex flex-col items-center justify-center w-28 h-28 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
               >
                 <FolderGit2 className='h-10 w-10 mb-2 text-gray-700 dark:text-gray-300' />
                 <span className='text-gray-800 dark:text-gray-200 text-base font-semibold'>Projects</span>
@@ -56,7 +56,7 @@ const MobileMenu: React.FC = () => {
             <DialogClose asChild>
               <Link
                 href='/about'
-                className='flex flex-col items-center justify-center w-28 h-28 border border-gray-400 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
+                className='flex flex-col items-center justify-center w-28 h-28 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-none transition-all'
               >
                 <Info className='h-10 w-10 mb-2 text-gray-700 dark:text-gray-300' />
                 <span className='text-gray-800 dark:text-gray-200 text-base font-semibold'>About</span>

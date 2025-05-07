@@ -117,12 +117,12 @@ export default async function Page({
         <div className='block'>
           <div className='relative flex'>
             <div className='flex justify-between'>
-              <section className='xl:w-[calc(100%-330px)] w-full'>
+              <section className='w-full lg:w-[calc(100%-330px)]'>
                 <div className='py-[40px] bg-white dark:bg-gray-900'>
                   <div
                     className='m-w-4xl px-[14px] md:px-[40px]'
                     style={{
-                      fontSize: '1.25em'
+                      fontSize: '1.15em'
                     }}
                   >
                     <div
@@ -133,7 +133,7 @@ export default async function Page({
                   </div>
                 </div>
               </section>
-              <aside className='hidden md:block md:w-[300px]'>
+              <aside className='hidden lg:block md:w-[300px]'>
                 <div>
                   <div className='p-[20px] bg-white dark:bg-gray-900'>
                     <div className='flex items-center justify-between'>
@@ -155,6 +155,14 @@ export default async function Page({
                     </div>
                     <span className='block h-[1.5rem]' />
                     <p>美少女JKエンジニア</p>
+                  </div>
+                  <span className='block h-[1.5rem]' />
+                  <div className='flex flex-col sticky top-[1.5rem] bg-white dark:bg-gray-900'>
+                    <div className='flex gap-[1.5rem] flex-col items-stretch'>
+                      <div className='max-h-[calc(100vh-50px)] pt-[20px] px-[20px] pb-[25px]'>
+                        <div className='text-[18px] font-bold spacing-[1px]'>目次</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </aside>

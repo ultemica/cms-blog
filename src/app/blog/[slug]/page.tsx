@@ -1,5 +1,5 @@
 import { TableOfContents } from '@/components/ToC'
-import type { BlogList, Datum } from '@/models/blog.dto'
+import type { BlogDatum, BlogList } from '@/models/blog.dto'
 import { Client } from '@/models/schema'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
     }
   })
 
-  return response.data.map((blog: Datum) => ({
+  return response.data.map((blog: BlogDatum) => ({
     slug: blog.documentId
   }))
 }

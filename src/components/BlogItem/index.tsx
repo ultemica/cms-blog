@@ -1,8 +1,8 @@
-import type { Datum } from '@/models/blog.dto'
+import type { BlogDatum } from '@/models/blog.dto'
 import Link from 'next/link'
 
 type Props = {
-  item: Datum
+  item: BlogDatum
 }
 
 export default function BlogItem({ item }: Props) {

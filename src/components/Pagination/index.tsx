@@ -18,7 +18,6 @@ const PaginationLink = ({ ...props }) => (
 export function Pages({ total, size }: { total: number; size: number }) {
   const searchParams = useSearchParams()
   const currentPage = Number.parseInt(searchParams.get('page') || '0', 10)
-  console.log('currentPage', currentPage)
   const pages = Math.ceil(total / size)
 
   return (

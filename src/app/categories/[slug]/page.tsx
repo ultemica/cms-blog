@@ -3,19 +3,19 @@ import { Pagination, PaginationContent, PaginationNext, PaginationPrevious } fro
 import type { CategoryDatumSchema, Item } from '@/models/category.dto'
 import { Client } from '@/models/schema'
 
-// export const revalidate = 10
+export const revalidate = 10
 
-// export async function generateStaticParams() {
-//   const response = await Client.get('/categories/:id', {
-//     params: {
-//       id: ''
-//     }
-//   })
+export async function generateStaticParams() {
+  const response = await Client.get('/categories', {
+    queries: {
+      'populate[blogs][populate]': 'categories'
+    }
+  })
 
-//   return response.data.map((category) => ({
-//     slug: category.documentId
-//   }))
-// }
+  return response.data.map((category) => ({
+    slug: category.documentId
+  }))
+}
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -27,7 +27,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       'populate[blogs][populate]': 'categories'
     }
   })
-  console.log(response)
   return (
     <div className='px-4 md:px-8'>
       <h1 className='text-4xl font-bold mb-4'>Blog</h1>

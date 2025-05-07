@@ -67,7 +67,7 @@ export default async function Page({
         <div className='block'>
           <div className='relative flex'>
             <div className='flex justify-between'>
-              <section className='w-full lg:w-[calc(100%-330px)]'>
+              <section className='w-full md:w-[calc(100%-330px)]'>
                 <div className='py-[40px] bg-white dark:bg-gray-900 rounded-md'>
                   <div
                     className='m-w-4xl px-[14px] sm:px-[40px]'
@@ -83,7 +83,7 @@ export default async function Page({
                   </div>
                 </div>
               </section>
-              <aside className='hidden lg:block md:w-[300px]'>
+              <aside className='hidden md:block md:w-[300px]'>
                 <div className='p-[20px] bg-white dark:bg-gray-900 rounded-md'>
                   <div className='flex items-center justify-between'>
                     <Image src='/author.webp' width={60} height={60} alt='tkgstrator' className='rounded-full' />

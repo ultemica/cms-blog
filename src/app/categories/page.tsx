@@ -21,18 +21,26 @@ export default async function Page() {
         {category.data
           .slice()
           .sort((a, b) => a.name.localeCompare(b.name))
-          .map((category) => (
-            <Link
-              key={category.documentId}
-              href={`/categories/${category.documentId}`}
-              className='block bg-white dark:bg-gray-800 rounded shadow p-4 hover:ring-2 hover:ring-blue-400 transition'
-            >
-              <h2 className='text-2xl font-semibold mb-2'>{category.name}</h2>
-              <div className='text-gray-600 dark:text-gray-300'>
-                {category.blogs.length === 0 ? 'No articles' : `${category.blogs.length} articles`}
+          .map((category) =>
+            category.blogs.length === 0 ? (
+              <div
+                key={category.documentId}
+                className='block bg-white dark:bg-gray-800 rounded shadow p-4 opacity-60 cursor-not-allowed'
+              >
+                <h2 className='text-2xl font-semibold mb-2'>{category.name}</h2>
+                <div className='text-gray-600 dark:text-gray-300'>No articles</div>
               </div>
-            </Link>
-          ))}
+            ) : (
+              <Link
+                key={category.documentId}
+                href={`/categories/${category.documentId}`}
+                className='block bg-white dark:bg-gray-800 rounded shadow p-4 hover:ring-2 hover:ring-blue-400 transition'
+              >
+                <h2 className='text-2xl font-semibold mb-2'>{category.name}</h2>
+                <div className='text-gray-600 dark:text-gray-300'>{`${category.blogs.length} articles`}</div>
+              </Link>
+            )
+          )}
       </div>
     </div>
   )

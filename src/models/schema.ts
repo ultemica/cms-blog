@@ -54,6 +54,11 @@ const api = makeApi([
         name: 'populate[blogs][populate]',
         type: 'Query',
         schema: z.string().optional()
+      },
+      {
+        name: 'limit',
+        type: 'Query',
+        schema: z.coerce.number().int().optional()
       }
     ],
     response: ItemSchema(CategoryDatumSchema)

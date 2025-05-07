@@ -1,5 +1,6 @@
 import type { Category } from '@/models/category.dto'
 import { Client } from '@/models/schema'
+import Link from 'next/link'
 
 export const revalidate = 10
 
@@ -21,12 +22,16 @@ export default async function Page() {
           .slice()
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((category) => (
-            <div key={category.documentId} className='bg-white dark:bg-gray-800 rounded shadow p-4'>
+            <Link
+              key={category.documentId}
+              href={`/categories/${category.documentId}`}
+              className='block bg-white dark:bg-gray-800 rounded shadow p-4 hover:ring-2 hover:ring-blue-400 transition'
+            >
               <h2 className='text-2xl font-semibold mb-2'>{category.name}</h2>
               <div className='text-gray-600 dark:text-gray-300'>
                 {category.blogs.length === 0 ? 'No articles' : `${category.blogs.length} articles`}
               </div>
-            </div>
+            </Link>
           ))}
       </div>
     </div>

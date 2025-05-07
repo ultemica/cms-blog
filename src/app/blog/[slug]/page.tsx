@@ -1,10 +1,6 @@
-import { TableOfContents } from '@/components/ToC'
 import type { BlogDatum, BlogList } from '@/models/blog.dto'
 import { Client } from '@/models/schema'
-import Image from 'next/image'
-import Link from 'next/link'
-import { BsGithub, BsTwitterX } from 'react-icons/bs'
-import { FaBluesky } from 'react-icons/fa6'
+import {} from 'react-icons/bs'
 import markdownToHtml from 'zenn-markdown-html'
 
 export const revalidate = 10
@@ -39,7 +35,7 @@ export default async function Page({
   const html = markdownToHtml(markdown)
 
   return (
-    <div>
+    <div className='w-full'>
       <header className='pt-[0.0rem] pb-[3.2rem] px-0 text-center'>
         <div className='m-w-6xl mx-auto px-[40px]'>
           <div className='relative'>
@@ -83,35 +79,6 @@ export default async function Page({
                   </div>
                 </div>
               </section>
-              <aside className='hidden md:block md:w-[300px]'>
-                <div className='p-[20px] bg-white dark:bg-gray-900 rounded-md'>
-                  <div className='flex items-center justify-between'>
-                    <Image src='/author.webp' width={60} height={60} alt='tkgstrator' className='rounded-full' />
-                    <div className='w-[calc(100%-70px)]'>
-                      <span className='mt-[3px] text-[1.2rem] font-bold'>tkgstrator</span>
-                      <div className='flex gap-[10px] items-center mt-[7px]'>
-                        <Link href='https://bsky.app/profile/tkgstrator.work'>
-                          <FaBluesky />
-                        </Link>
-                        <Link href='https://x.com/tkgling'>
-                          <BsTwitterX />
-                        </Link>
-                        <Link href='https://github.com/tkgstrator'>
-                          <BsGithub />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <span className='block h-[1.5rem]' />
-                  <p>美少女JKエンジニア</p>
-                </div>
-                <span className='block h-[1.5rem]' />
-                <div className='sticky top-[1.5rem]'>
-                  <div>
-                    <TableOfContents content={markdown} />
-                  </div>
-                </div>
-              </aside>
             </div>
           </div>
         </div>

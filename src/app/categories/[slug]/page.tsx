@@ -1,3 +1,6 @@
+import BlogItem from '@/components/BlogItem'
+import { Pagination, PaginationContent, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
+import type { CategoryDatumSchema, Item } from '@/models/category.dto'
 import { Client } from '@/models/schema'
 
 // export const revalidate = 10
@@ -16,21 +19,33 @@ import { Client } from '@/models/schema'
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const response = await Client.get('/categories/:id', {
+  const response: Item<typeof CategoryDatumSchema> = await Client.get('/categories/:id', {
     params: {
       id: slug
     },
     queries: {
-      populate: 'blogs'
+      'populate[blogs][populate]': 'categories'
     }
   })
   console.log(response)
   return (
-    <>
-      <div className='min-h-screen flex flex-col items-center justify-center'>
-        <h1 className='text-4xl font-bold text-gray-900 dark:text-gray-400'>404 - Page Not Found</h1>
-        <p className='mt-4 text-gray-700 dark:text-gray-600'>The page you&apos;re looking for does not exist.</p>
-      </div>
-    </>
+    <div className='px-4 md:px-8'>
+      <h1 className='text-4xl font-bold mb-4'>Blog</h1>
+      <ul className='space-y-4'>
+        {response.data.blogs.map((item) => {
+          return (
+            <li key={item.id}>
+              <BlogItem item={item} />
+            </li>
+          )
+        })}
+      </ul>
+      <Pagination>
+        <PaginationContent>
+          <PaginationPrevious href='#' />
+          <PaginationNext href='#' />
+        </PaginationContent>
+      </Pagination>
+    </div>
   )
 }

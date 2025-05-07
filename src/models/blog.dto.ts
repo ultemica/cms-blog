@@ -16,7 +16,7 @@ export const BlogDatumSchema = z.object({
   title: z.string(),
   description: z.string(),
   content: z.string(),
-  categories: z.array(CategorySchema).optional(),
+  categories: z.array(CategorySchema),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
   publishedAt: z.coerce.date()

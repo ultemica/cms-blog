@@ -39,7 +39,7 @@ const api = makeApi([
     path: '/categories',
     parameters: [
       {
-        name: 'populate',
+        name: 'populate[blogs][populate]',
         type: 'Query',
         schema: z.string().optional()
       }
@@ -51,7 +51,7 @@ const api = makeApi([
     path: '/categories/:id',
     parameters: [
       {
-        name: 'populate',
+        name: 'populate[blogs][populate]',
         type: 'Query',
         schema: z.string().optional()
       }

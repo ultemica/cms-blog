@@ -10,7 +10,7 @@ export const CategoryDatumSchema = z.object({
   publishedAt: z.coerce.date(),
   blogs: z.array(BlogDatumSchema)
 })
-export type Datum = z.infer<typeof CategoryDatumSchema>
+export type CategoryDatum = z.infer<typeof CategoryDatumSchema>
 
 export const PaginationSchema = z.object({
   page: z.number(),
@@ -31,13 +31,13 @@ export const CategorySchema = z.object({
 })
 export type Category = z.infer<typeof CategorySchema>
 
-export const ItemSchema = (S: z.ZodSchema) =>
+export const ItemSchema = <T extends z.ZodSchema>(S: T) =>
   z.object({
-    data: S,
-    meta: MetaSchema
+    data: S
   })
+export type Item<S extends z.ZodSchema> = z.infer<ReturnType<typeof ItemSchema<S>>>
 
-export const ListSchema = (S: z.ZodSchema) =>
+export const ListSchema = <T extends z.ZodSchema>(S: T) =>
   z.object({
     data: z.array(S),
     meta: MetaSchema

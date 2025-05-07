@@ -8,9 +8,6 @@ export default async function Page() {
   const category: Category = await Client.get('/categories', {
     queries: {
       'populate[blogs][populate]': 'categories'
-      // sort: 'createdAt:desc',
-      // 'pagination[page]': 0,
-      // 'pagination[pageSize]': 10
     }
   })
 

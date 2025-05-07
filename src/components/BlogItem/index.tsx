@@ -23,13 +23,11 @@ export default function BlogItem({ item }: Props) {
           </h2>
           <div className='flex flex-wrap'>
             {item.categories.map((category) => (
-              <a
-                key={category.documentId}
-                className='text-red-500 hover:text-red-600 dark:hover:text-red-400 mr-3 text-sm font-medium uppercase'
-                href={`/tags/${category.documentId}`}
-              >
-                {category.name}
-              </a>
+              <Link key={category.documentId} href={`/categories/${category.documentId}`} className='mr-3'>
+                <span className='text-red-500 hover:text-red-600 dark:hover:text-red-400 text-sm font-medium uppercase'>
+                  {category.name}
+                </span>
+              </Link>
             ))}
           </div>
         </div>

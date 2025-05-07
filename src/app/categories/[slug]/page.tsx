@@ -1,15 +1,30 @@
 import { Client } from '@/models/schema'
 
-export async function generateStaticParams() {
-  const response = await Client.get('/categories', {})
+// export const revalidate = 10
 
-  return response.data.map((category) => ({
-    slug: category.documentId
-  }))
-}
+// export async function generateStaticParams() {
+//   const response = await Client.get('/categories/:id', {
+//     params: {
+//       id: ''
+//     }
+//   })
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-export default function Page({ params }: { params: Promise<{ slug: string }> }) {
+//   return response.data.map((category) => ({
+//     slug: category.documentId
+//   }))
+// }
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const response = await Client.get('/categories/:id', {
+    params: {
+      id: slug
+    },
+    queries: {
+      populate: 'blogs'
+    }
+  })
+  console.log(response)
   return (
     <>
       <div className='min-h-screen flex flex-col items-center justify-center'>

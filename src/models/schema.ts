@@ -2,7 +2,7 @@ import { Zodios, makeApi } from '@zodios/core'
 import { z } from 'zod'
 import { AboutSchema } from './about.dto'
 import { BlogListSchema, BlogSchema} from './blog.dto'
-import { CategorySchema } from './category.dto'
+import { CategoryDatumSchema, CategorySchema, ItemSchema, ListSchema } from './category.dto'
 
 const api = makeApi([
   {
@@ -44,7 +44,7 @@ const api = makeApi([
         schema: z.string().optional()
       }
     ],
-    response: CategorySchema
+    response: ListSchema(CategoryDatumSchema)
   },
   {
     method: 'get',
@@ -56,7 +56,7 @@ const api = makeApi([
         schema: z.string().optional()
       }
     ],
-    response: CategorySchema
+    response: ItemSchema(CategoryDatumSchema)
   }
 ])
 

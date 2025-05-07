@@ -30,3 +30,15 @@ export const CategorySchema = z.object({
   meta: MetaSchema
 })
 export type Category = z.infer<typeof CategorySchema>
+
+export const ItemSchema = (S: z.ZodSchema) =>
+  z.object({
+    data: S,
+    meta: MetaSchema
+  })
+
+export const ListSchema = (S: z.ZodSchema) =>
+  z.object({
+    data: z.array(S),
+    meta: MetaSchema
+  })

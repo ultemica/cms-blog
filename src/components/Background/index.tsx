@@ -6,6 +6,10 @@ import { useEffect, useRef } from 'react'
 
 // フルHD(1920x1080)で150個
 const SNOW_PER_PIXEL = 150 / (1920 * 1080)
+const STORAGE_KEY = {
+  dark: 'background_snowflakes',
+  light: 'background_petals'
+}
 
 // 桜の花びらを描画する関数
 function drawPetal(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, angle: number) {
@@ -89,8 +93,33 @@ const Background: React.FC = () => {
       )
     }
 
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    function saveFlakes(flakes: any[], mode: 'dark' | 'light') {
+      try {
+        localStorage.setItem(STORAGE_KEY[mode], JSON.stringify(flakes))
+      } catch {}
+    }
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    function loadFlakes(mode: 'dark' | 'light'): any[] | null {
+      try {
+        const data = localStorage.getItem(STORAGE_KEY[mode])
+        if (!data) return null
+        const arr = JSON.parse(data)
+        if (!Array.isArray(arr)) return null
+        return arr
+      } catch {
+        return null
+      }
+    }
+
     // flakesの再生成はモードが変わったときだけ
-    flakesRef.current = createFlakes(getFlakeCount(), modeRef.current)
+    let flakes = loadFlakes(modeRef.current)
+    const targetCount = getFlakeCount()
+    if (!flakes || flakes.length !== targetCount) {
+      flakes = createFlakes(targetCount, modeRef.current)
+    }
+    flakesRef.current = flakes
+    saveFlakes(flakesRef.current, modeRef.current)
 
     // リサイズ時にcanvasサイズと個数を調整
     const handleResize = () => {
@@ -105,6 +134,7 @@ const Background: React.FC = () => {
       } else if (flakes.length > targetCount) {
         flakes.length = targetCount
       }
+      saveFlakes(flakes, modeRef.current)
     }
     window.addEventListener('resize', handleResize)
 
@@ -142,6 +172,7 @@ const Background: React.FC = () => {
           }
         }
       }
+      saveFlakes(flakesRef.current, modeRef.current)
     }
 
     draw()

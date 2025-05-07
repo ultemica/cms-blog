@@ -14,7 +14,7 @@ const MobileMenu: React.FC = () => {
           <TerminalSquare className='h-7 w-7' />
         </button>
       </DialogTrigger>
-      <DialogContent className='md:hidden bg-gray-50 dark:bg-gray-900 p-8 border border-gray-400 dark:border-gray-700 rounded-none [&>button:last-child]:hidden'>
+      <DialogContent className='bg-gray-50 dark:bg-gray-900 p-8 border border-gray-400 dark:border-gray-700 rounded-none [&>button:last-child]:hidden'>
         <DialogClose asChild>
           <button
             aria-label='Close'

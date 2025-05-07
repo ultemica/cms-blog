@@ -7,7 +7,9 @@ export const revalidate = 10
 export default async function Page() {
   const category: Category = await Client.get('/categories', {
     queries: {
-      'populate[blogs][populate]': 'categories'
+      'populate[blogs][populate]': 'categories',
+      'pagination[page]': 0,
+      'pagination[pageSize]': 100
     }
   })
 

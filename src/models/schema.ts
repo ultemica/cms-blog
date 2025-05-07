@@ -56,7 +56,12 @@ const api = makeApi([
         schema: z.string().optional()
       },
       {
-        name: 'limit',
+        name: 'pagination[page]',
+        type: 'Query',
+        schema: z.coerce.number().int().optional()
+      },
+      {
+        name: 'pagination[pageSize]',
         type: 'Query',
         schema: z.coerce.number().int().optional()
       }

@@ -1,14 +1,16 @@
 import * as z from 'zod'
+import { BlogDatumSchema } from './blog.dto'
 
-export const DatumSchema = z.object({
+export const CategoryDatumSchema = z.object({
   id: z.number(),
   documentId: z.string(),
   name: z.string(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),
-  publishedAt: z.coerce.date()
+  publishedAt: z.coerce.date(),
+  blogs: z.array(BlogDatumSchema)
 })
-export type Datum = z.infer<typeof DatumSchema>
+export type Datum = z.infer<typeof CategoryDatumSchema>
 
 export const PaginationSchema = z.object({
   page: z.number(),
@@ -24,7 +26,7 @@ export const MetaSchema = z.object({
 export type Meta = z.infer<typeof MetaSchema>
 
 export const CategorySchema = z.object({
-  data: z.array(DatumSchema),
+  data: z.array(CategoryDatumSchema),
   meta: MetaSchema
 })
 export type Category = z.infer<typeof CategorySchema>

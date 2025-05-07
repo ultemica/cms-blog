@@ -1,7 +1,7 @@
 import { Zodios, makeApi } from '@zodios/core'
 import { z } from 'zod'
 import { AboutSchema } from './about.dto'
-import { BlogListSchema, BlogSchema, DatumSchema } from './blog.dto'
+import { BlogListSchema, BlogSchema} from './blog.dto'
 import { CategorySchema } from './category.dto'
 
 const api = makeApi([
@@ -37,6 +37,13 @@ const api = makeApi([
   {
     method: 'get',
     path: '/categories',
+    parameters: [
+      {
+        name: 'populate',
+        type: 'Query',
+        schema: z.string().optional()
+      }
+    ],
     response: CategorySchema
   }
 ])

@@ -45,6 +45,18 @@ const api = makeApi([
       }
     ],
     response: CategorySchema
+  },
+  {
+    method: 'get',
+    path: '/categories/:id',
+    parameters: [
+      {
+        name: 'populate',
+        type: 'Query',
+        schema: z.string().optional()
+      }
+    ],
+    response: CategorySchema
   }
 ])
 

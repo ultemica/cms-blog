@@ -1,3 +1,4 @@
+import { TableOfContents } from '@/components/ToC'
 import type { BlogList, Datum } from '@/models/blog.dto'
 import { Client } from '@/models/schema'
 import Image from 'next/image'
@@ -20,104 +21,6 @@ export async function generateStaticParams() {
   }))
 }
 
-// 目次用型
-type Heading = {
-  id: string
-  text: string
-  level: number
-  children?: Heading[]
-}
-
-// Markdownの見出し配列を階層構造に変換する関数
-function nestHeadings(flatHeadings: Omit<Heading, 'children'>[]): Heading[] {
-  const result: Heading[] = []
-  const stack: Heading[] = []
-
-  for (const h of flatHeadings) {
-    const heading: Heading = { ...h, children: [] }
-    while (stack.length > 0 && stack[stack.length - 1].level >= heading.level) {
-      stack.pop()
-    }
-    if (stack.length === 0) {
-      result.push(heading)
-      stack.push(heading)
-    } else {
-      stack[stack.length - 1].children?.push(heading)
-      stack.push(heading)
-    }
-  }
-  return result
-}
-
-// Markdownから見出しを抽出する関数
-function extractHeadings(markdown: string): Omit<Heading, 'children'>[] {
-  const lines = markdown.split('\n')
-  const headings: Omit<Heading, 'children'>[] = []
-  for (const line of lines) {
-    const match = /^(#{1,6})\s+(.+)$/.exec(line)
-    if (match) {
-      const level = match[1].length
-      const text = match[2].trim()
-      // id生成: Zenn風に小文字化・空白を-に・記号除去
-      const id = encodeURIComponent(
-        text
-          .toLowerCase()
-          .replace(/[^\w\s\-ぁ-んァ-ヶ一-龠々ー]/g, '')
-          .replace(/\s+/g, '-')
-      )
-      headings.push({ id, text, level })
-    }
-  }
-  return headings
-}
-
-// 目次レンダリング用リスト
-function renderTocList(headings: Heading[], depth = 1) {
-  return (
-    <ol
-      className={
-        depth === 1
-          ? 'pl-0 list-none font-bold relative before:absolute before:top-[17px] before:bottom-[8px] before:left-[5px] before:w-[2px] before:content-[""] before:bg-blue-400 before:rounded-b-[5px]'
-          : 'pl-0 list-none font-normal'
-      }
-    >
-      {headings.map((heading) => (
-        <li key={heading.id} className={depth === 1 ? 'relative pl-[21px] mt-1' : 'relative mt-1'}>
-          <span
-            className={
-              depth === 1
-                ? 'absolute top-[4px] left-0 w-3 h-3 bg-blue-200 border-2 border-gray-50 dark:border-gray-900 rounded-full'
-                : 'absolute top-[6px] left-[-19px] w-2 h-2 bg-blue-100 border-2 border-gray-50 dark:border-gray-900 rounded-full'
-            }
-          />
-          <a
-            href={`#${heading.id}`}
-            className='block max-h-[3.05em] my-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors'
-          >
-            {heading.text}
-          </a>
-          {heading.children && heading.children.length > 0 && renderTocList(heading.children, depth + 1)}
-        </li>
-      ))}
-    </ol>
-  )
-}
-
-// 目次レンダリング関数
-function TableOfContents({ headings }: { headings: Heading[] }) {
-  return (
-    <div
-      className='
-        max-h-[calc(100vh-50px)] p-5 pb-6 overflow-auto
-        bg-gray-50 dark:bg-gray-900
-      '
-    >
-      <div className='text-base font-bold tracking-wider mb-2'>目次</div>
-      <div className='text-sm leading-[1.5]'>{renderTocList(headings)}</div>
-    </div>
-  )
-}
-
 export default async function Page({
   params
 }: {
@@ -134,9 +37,6 @@ export default async function Page({
   })
   const markdown = response.data.content
   const html = markdownToHtml(markdown)
-  // Markdownから見出しを抽出し階層構造に変換
-  const flatHeadings = extractHeadings(markdown)
-  const headings = nestHeadings(flatHeadings)
 
   return (
     <div>
@@ -208,7 +108,7 @@ export default async function Page({
                 <span className='block h-[1.5rem]' />
                 <div className='sticky top-[1.5rem]'>
                   <div>
-                    <TableOfContents headings={headings} />
+                    <TableOfContents content={markdown} />
                   </div>
                 </div>
               </aside>

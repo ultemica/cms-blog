@@ -70,7 +70,7 @@ export default async function Page({
               <section className='w-full lg:w-[calc(100%-330px)]'>
                 <div className='py-[40px] bg-white dark:bg-gray-900 rounded-md'>
                   <div
-                    className='m-w-4xl px-[14px] md:px-[40px]'
+                    className='m-w-4xl px-[14px] sm:px-[40px]'
                     style={{
                       fontSize: '1.15em'
                     }}

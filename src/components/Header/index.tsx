@@ -5,6 +5,7 @@ import { useAtom } from 'jotai/react'
 import { Code2, FolderGit2, Info, ListTodo, Moon, Sun, TerminalSquare } from 'lucide-react'
 import Link from 'next/link'
 import type React from 'react'
+import { FaXmark } from 'react-icons/fa6'
 
 const MobileMenu: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const MobileMenu: React.FC = () => {
             className='absolute right-4 top-4 flex items-center justify-center rounded border border-gray-400 dark:border-gray-700 p-2 hover:bg-black transition'
             type='button'
           >
-            <Code2 className='h-5 w-5' />
+            <FaXmark className='h-5 w-5' />
           </button>
         </DialogClose>
         <div className='flex flex-col'>

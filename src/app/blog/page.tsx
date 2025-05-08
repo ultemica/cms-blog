@@ -35,7 +35,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
           })}
         </ul>
       </div>
-      <div className='mt-8'>
+      <div className=''>
         <Pagination>
           <PaginationContent>
             <PaginationPrevious

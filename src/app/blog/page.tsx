@@ -6,31 +6,21 @@ import Link from 'next/link'
 
 export const revalidate = 10
 
-export async function generateStaticParams() {
-  const response: BlogList = await Client.get('/blogs', {
-    queries: {
-      'pagination[pageSize]': 5,
-      'pagination[page]': 1,
-      populate: 'categories',
-      sort: 'createdAt:desc'
-    }
-  })
-  const { pageCount } = response.meta.pagination
+// Next.jsの静的生成(SSG)でページネーションと記事詳細のパスが被る場合、
+// 1. ページネーションはクエリパラメータ（/blog?p=1）で動的レンダリング
+// 2. 記事詳細は /blog/[slug] のような動的セグメントで静的生成
+// という構成が一般的です。
 
-  return Array.from({ length: pageCount }, (_, i) => ({
-    p: String(i + 1)
-  }))
-}
+// つまり、/blog/page.tsx は今のまま（クエリパラメータでページネーション）でOKです。
+// generateStaticParamsは削除して問題ありません。
+// 記事詳細は /blog/[slug]/page.tsx で静的生成を維持してください。
 
-// generateStaticParamsは[...slug]や[page]などの動的セグメントでのみ静的ページ生成に使われます。
-// /blog?p=1 のようなクエリパラメータには適用されません。
-// そのため、/blog?p=1,2... の静的生成はNext.jsの仕様上できません。
-// /blog/[page]/page.tsx のようなファイル構成にして、[page]をパラメータとして受け取る必要があります。
+// どうしてもページネーションも静的生成したい場合は、
+// /blog/page/[page]/page.tsx のようなディレクトリ構成にし、
+// 記事詳細は /blog/[slug]/page.tsx で分ける必要があります。
+// ただしURLが /blog/page/1 のようになります。
 
-// 例: /blog/[page]/page.tsx を作成し、generateStaticParamsで { page: "1" }, { page: "2" } ... を返すと
-// /blog/1, /blog/2 ... の静的ページが生成されます。
-
-// 現状の /blog/page.tsx では /blog?p=1 のようなクエリで静的生成はされません。
+// 結論: 今のまま /blog?p=1 で動的レンダリング、/blog/[slug] で静的生成が最も衝突がなく実用的です。
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ p?: string }> }) {
   const { p } = await searchParams

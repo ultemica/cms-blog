@@ -17,7 +17,7 @@ export default function BlogItem({ item }: Props) {
       <div className='space-y-3'>
         <div>
           <h2 className='text-2xl leading-8 font-bold tracking-tight'>
-            <Link className='text-gray-900 dark:text-gray-100' href={`blog/${item.documentId}`}>
+            <Link className='text-gray-900 dark:text-gray-100' href={`/blog/${item.documentId}`}>
               {item.title}
             </Link>
           </h2>

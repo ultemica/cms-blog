@@ -40,22 +40,27 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
               aria-disabled={currentPage <= 1}
               className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
             />
-            {/* ページ番号リンクを追加 */}
-            {Array.from({ length: pageCount }, (_, i) => {
-              const pageNum = i + 1
-              const isActive = pageNum === page
-              return (
-                <Link
-                  key={pageNum}
-                  href={`/blog?p=${pageNum}`}
-                  className={`mx-1 px-3 py-1 rounded ${isActive ? 'bg-primary text-white' : 'bg-muted'}${isActive ? ' pointer-events-none opacity-70' : ''}`}
-                  aria-current={isActive ? 'page' : undefined}
-                  tabIndex={isActive ? -1 : 0}
-                >
-                  {pageNum}
-                </Link>
-              )
-            })}
+            {/* ページ番号リンクを最大5つまで表示 */}
+            {(() => {
+              let start = Math.max(1, page - 2)
+              const end = Math.min(pageCount, start + 4)
+              if (end - start < 4) start = Math.max(1, end - 4)
+              return Array.from({ length: Math.min(5, pageCount) }, (_, i) => {
+                const pageNum = start + i
+                const isActive = pageNum === page
+                return (
+                  <Link
+                    key={pageNum}
+                    href={`/blog?p=${pageNum}`}
+                    className={`mx-1 px-3 py-1 rounded ${isActive ? 'bg-primary text-white' : 'bg-muted'}${isActive ? ' pointer-events-none opacity-70' : ''}`}
+                    aria-current={isActive ? 'page' : undefined}
+                    tabIndex={isActive ? -1 : 0}
+                  >
+                    {pageNum}
+                  </Link>
+                )
+              })
+            })()}
             <PaginationNext
               href={pageCount && currentPage < pageCount ? `/blog?p=${currentPage + 1}` : undefined}
               aria-disabled={pageCount ? currentPage >= pageCount : false}

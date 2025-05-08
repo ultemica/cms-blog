@@ -22,17 +22,19 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
   // console.log(page, pageSize, pageCount, total)
 
   return (
-    <div className='px-4 md:px-8 flex flex-col min-h-[80vh]'>
+    <div className='px-4 md:px-8 flex flex-col min-h-screen'>
       <h1 className='text-4xl font-bold mb-4'>Blog</h1>
-      <ul className='space-y-4 flex-1'>
-        {response.data.map((item) => {
-          return (
-            <li key={item.id}>
-              <BlogItem item={item} />
-            </li>
-          )
-        })}
-      </ul>
+      <div className='flex-1'>
+        <ul className='space-y-4'>
+          {response.data.map((item) => {
+            return (
+              <li key={item.id}>
+                <BlogItem item={item} />
+              </li>
+            )
+          })}
+        </ul>
+      </div>
       <div className='mt-8'>
         <Pagination>
           <PaginationContent>

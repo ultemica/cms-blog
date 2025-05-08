@@ -15,6 +15,7 @@ export default async function Page({ params }: { params: Promise<{ p: number }> 
       'pagination[pageSize]': 5
     }
   })
+  const { page, pageSize, pageCount, total } = response.meta.pagination
 
   console.log('response', response)
 
@@ -32,8 +33,15 @@ export default async function Page({ params }: { params: Promise<{ p: number }> 
       </ul>
       <Pagination>
         <PaginationContent>
-          <PaginationPrevious href='#' />
-          <PaginationNext href='#' />
+          <PaginationPrevious href={p > 1 ? `/blog?p=${p - 1}` : undefined} aria-disabled={p <= 1} />
+          <PaginationNext
+            href={
+              response.meta?.pagination?.pageCount && p < response.meta.pagination.pageCount
+                ? `/blog?p=${p + 1}`
+                : undefined
+            }
+            aria-disabled={response.meta?.pagination?.pageCount ? p >= response.meta.pagination.pageCount : false}
+          />
         </PaginationContent>
       </Pagination>
     </div>

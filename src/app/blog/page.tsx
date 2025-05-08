@@ -6,16 +6,42 @@ import Link from 'next/link'
 
 export const revalidate = 10
 
+export async function generateStaticParams() {
+  const response: BlogList = await Client.get('/blogs', {
+    queries: {
+      'pagination[pageSize]': 5,
+      'pagination[page]': 1,
+      populate: 'categories',
+      sort: 'createdAt:desc'
+    }
+  })
+  const { pageCount } = response.meta.pagination
+
+  return Array.from({ length: pageCount }, (_, i) => ({
+    p: String(i + 1)
+  }))
+}
+
+// generateStaticParamsは[...slug]や[page]などの動的セグメントでのみ静的ページ生成に使われます。
+// /blog?p=1 のようなクエリパラメータには適用されません。
+// そのため、/blog?p=1,2... の静的生成はNext.jsの仕様上できません。
+// /blog/[page]/page.tsx のようなファイル構成にして、[page]をパラメータとして受け取る必要があります。
+
+// 例: /blog/[page]/page.tsx を作成し、generateStaticParamsで { page: "1" }, { page: "2" } ... を返すと
+// /blog/1, /blog/2 ... の静的ページが生成されます。
+
+// 現状の /blog/page.tsx では /blog?p=1 のようなクエリで静的生成はされません。
+
 export default async function Page({ searchParams }: { searchParams: Promise<{ p?: string }> }) {
   const { p } = await searchParams
   const pageNum = Number(p)
   const currentPage = Number.isNaN(pageNum) || pageNum < 1 ? 1 : pageNum
   const response: BlogList = await Client.get('/blogs', {
     queries: {
-      populate: 'categories',
-      sort: 'createdAt:desc',
+      'pagination[pageSize]': 5,
       'pagination[page]': currentPage,
-      'pagination[pageSize]': 5
+      populate: 'categories',
+      sort: 'createdAt:desc'
     }
   })
   const { page, pageCount } = response.meta.pagination

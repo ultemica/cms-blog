@@ -18,7 +18,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
       'pagination[pageSize]': 5
     }
   })
-  const { page, pageSize, pageCount, total } = response.meta.pagination
+  const { page, pageCount } = response.meta.pagination
 
   return (
     <div className='px-4 md:px-8 flex flex-col justify-between h-[calc(100vh-76px-48px-36px)]'>

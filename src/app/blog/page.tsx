@@ -21,17 +21,19 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
   const { page, pageSize, pageCount, total } = response.meta.pagination
 
   return (
-    <div className='px-4 md:px-8'>
+    <div className='px-4 md:px-8 flex flex-col min-h-full'>
       <h1 className='text-4xl font-bold mb-4'>Blog</h1>
-      <ul className='space-y-4'>
-        {response.data.map((item) => {
-          return (
-            <li key={item.id}>
-              <BlogItem item={item} />
-            </li>
-          )
-        })}
-      </ul>
+      <div className='flex-1'>
+        <ul className='space-y-4'>
+          {response.data.map((item) => {
+            return (
+              <li key={item.id}>
+                <BlogItem item={item} />
+              </li>
+            )
+          })}
+        </ul>
+      </div>
       <div className='mt-4'>
         <Pagination>
           <PaginationContent>

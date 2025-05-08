@@ -15,12 +15,10 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
       populate: 'categories',
       sort: 'createdAt:desc',
       'pagination[page]': currentPage,
-      'pagination[pageSize]': 5
+      'pagination[pageSize]': 1
     }
   })
   const { page, pageSize, pageCount, total } = response.meta.pagination
-
-  // console.log(page, pageSize, pageCount, total)
 
   return (
     <div className='px-4 md:px-8'>

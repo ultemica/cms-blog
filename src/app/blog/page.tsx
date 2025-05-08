@@ -21,7 +21,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
   const { page, pageSize, pageCount, total } = response.meta.pagination
 
   return (
-    <div className='px-4 md:px-8 flex flex-col justify-between h-[calc(100vh-76px-48px)]'>
+    <div className='px-4 md:px-8 flex flex-col justify-between h-[calc(100vh-76px-48px-36px)]'>
       <div className='flex-1'>
         <h1 className='text-4xl font-bold mb-4'>Blog</h1>
         <ul className='space-y-4'>

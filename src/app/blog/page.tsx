@@ -22,20 +22,18 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
   // console.log(page, pageSize, pageCount, total)
 
   return (
-    <div className='px-4 md:px-8 flex flex-col min-h-screen'>
+    <div className='px-4 md:px-8'>
       <h1 className='text-4xl font-bold mb-4'>Blog</h1>
-      <div className='flex-1'>
-        <ul className='space-y-4'>
-          {response.data.map((item) => {
-            return (
-              <li key={item.id}>
-                <BlogItem item={item} />
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-      <div className=''>
+      <ul className='space-y-4'>
+        {response.data.map((item) => {
+          return (
+            <li key={item.id}>
+              <BlogItem item={item} />
+            </li>
+          )
+        })}
+      </ul>
+      <div className='mt-4'>
         <Pagination>
           <PaginationContent>
             <PaginationPrevious
@@ -57,16 +55,18 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ p
               )
             })}
             <PaginationNext
-              href={pageCount && currentPage < pageCount ? `/blog?p=${currentPage + 1}` : undefined}
-              aria-disabled={pageCount ? currentPage >= pageCount : false}
+              href={
+                response.meta?.pagination?.pageCount && currentPage < response.meta.pagination.pageCount
+                  ? `/blog?p=${currentPage + 1}`
+                  : undefined
+              }
+              aria-disabled={
+                response.meta?.pagination?.pageCount ? currentPage >= response.meta.pagination.pageCount : false
+              }
             />
           </PaginationContent>
         </Pagination>
       </div>
-      {/* 必要なら下記のようにtotalやpageSizeも利用可能 */}
-      {/* <div className="mt-2 text-sm text-muted-foreground">
-        {total}件中 {(page - 1) * pageSize + 1}〜{Math.min(page * pageSize, total)}件を表示
-      </div> */}
     </div>
   )
 }

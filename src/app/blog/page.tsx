@@ -5,15 +5,18 @@ import { Client } from '@/models/schema'
 
 export const revalidate = 10
 
-export default async function Page() {
+export default async function Page({ params }: { params: Promise<{ p: number }> }) {
+  const { p } = await params
   const response: BlogList = await Client.get('/blogs', {
     queries: {
       populate: 'categories',
       sort: 'createdAt:desc',
-      'pagination[page]': 0,
-      'pagination[pageSize]': 10
+      'pagination[page]': p || 1,
+      'pagination[pageSize]': 5
     }
   })
+
+  console.log('response', response)
 
   return (
     <div className='px-4 md:px-8'>

@@ -1,0 +1,26 @@
+query GetCategories {
+  categories {
+    documentId
+    name
+    blogs {
+      documentId
+    }
+  }
+}
+
+query GetCategory($documentId: ID!) {
+  category(documentId: $documentId) {
+    documentId
+    name
+    blogs {
+      documentId
+      title
+      description
+      categories {
+        documentId
+        name
+      }
+      publishedAt
+    }
+  }
+}

@@ -1,23 +1,20 @@
-import type { Category } from '@/models/category.dto'
-import { Client } from '@/models/schema'
+import { GetCategoriesDocument, type GetCategoriesQuery } from '@/gql/graphql'
+import { client } from '@/lib/client'
 import Link from 'next/link'
 
 export const revalidate = 10
 
 export default async function Page() {
-  const category: Category = await Client.get('/categories', {
-    queries: {
-      'populate[blogs][populate]': 'categories',
-      'pagination[page]': 0,
-      'pagination[pageSize]': 100
-    }
-  })
+  const response = await client.request<GetCategoriesQuery>(GetCategoriesDocument, {})
+  const categories = response.categories.filter(
+    (category): category is NonNullable<typeof category> => category !== null
+  )
 
   return (
     <div className='px-4 md:px-8'>
       <h1 className='text-4xl font-bold mb-8'>Categories</h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6'>
-        {category.data
+        {categories
           .slice()
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((category) =>

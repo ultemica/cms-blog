@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/ToC'
-import type { BlogDatum, BlogList } from '@/models/blog.dto'
-import { Client } from '@/models/schema'
+import { GetBlogDocument, type GetBlogQuery, GetBlogsDocument, type GetBlogsQuery } from '@/gql/graphql'
+import { client } from '@/lib/client'
+import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsGithub, BsTwitterX } from 'react-icons/bs'
@@ -10,28 +11,26 @@ import markdownToHtml from 'zenn-markdown-html'
 export const revalidate = 10
 
 export async function generateStaticParams() {
-  const response: BlogList = await Client.get('/blogs', {
-    queries: {
-      populate: 'categories'
-    }
+  // とりあえず最大100記事分だけ静的ビルドする
+  const response = await client.request<GetBlogsQuery>(GetBlogsDocument, {
+    page: 1,
+    pageSize: 100
   })
-
-  return response.data.map((blog: BlogDatum) => ({
+  const blogs = response.blogs.filter((blog): blog is NonNullable<typeof blog> => blog !== null)
+  return blogs.map((blog) => ({
     slug: blog.documentId
   }))
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const response = await Client.get('/blogs/:id', {
-    params: {
-      id: slug
-    },
-    queries: {
-      populate: 'categories'
-    }
+  const { blog } = await client.request<GetBlogQuery>(GetBlogDocument, {
+    documentId: slug
   })
-  const html = markdownToHtml(response.data.content)
+  if (blog === undefined || blog === null) {
+    return null
+  }
+  const html = markdownToHtml(blog.content)
 
   return (
     <div>
@@ -51,10 +50,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                   fontSize: '0.84em'
                 }}
               >
-                {response.data.title}
+                {blog.title}
               </span>
             </h1>
-            <p className='text-gray-500 dark:text-gray-400'>{response.data.publishedAt.toDateString()}</p>
+            <p className='text-gray-500 dark:text-gray-400'>{dayjs(blog.publishedAt).format('ddd MMM DD YYYY')}</p>
           </div>
         </div>
       </header>
@@ -98,7 +97,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 <span className='block h-[1.5rem]' />
                 <div className='sticky top-[1.5rem]'>
                   <div>
-                    <TableOfContents content={response.data.content} />
+                    <TableOfContents content={blog.content} />
                   </div>
                 </div>
               </aside>

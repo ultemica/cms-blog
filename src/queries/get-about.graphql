@@ -1,0 +1,10 @@
+query GetAbout {
+  about {
+    name
+    documentId
+    content
+    description
+    thumbnail
+    publishedAt
+  }
+}

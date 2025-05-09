@@ -1,12 +1,16 @@
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { Client } from '@/models/schema'
+import { GetAboutDocument, type GetAboutQuery } from '@/gql/graphql'
+import { client } from '@/lib/client'
 import {} from '@/styles/font'
 import markdownToHtml from 'zenn-markdown-html'
 
 export default async function Page() {
-  const response = await Client.get('/about')
+  const { about: data } = await client.request<GetAboutQuery>(GetAboutDocument)
+  if (data === undefined || data === null) {
+    return null
+  }
 
-  const html = markdownToHtml(response.data.content, {})
+  const html = markdownToHtml(data.content, {})
   return (
     <div className='px-4 md:px-8'>
       <h1 className='text-4xl font-bold mb-4'>About</h1>
@@ -15,7 +19,7 @@ export default async function Page() {
           <Avatar className='w-[140px] h-[140px] mb-2 border-gray-400 dark:border-gray-200 border-3'>
             <AvatarImage src='/avatar.png' alt='@tkgstrator' />
           </Avatar>
-          <p className='font-[pixelMplus10] text-[20px] text-xl'>{response.data.name}</p>
+          <p className='font-[pixelMplus10] text-[20px] text-xl'>{data.name}</p>
         </div>
         <div className='text-gray-900 dark:text-gray-300'>
           {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}

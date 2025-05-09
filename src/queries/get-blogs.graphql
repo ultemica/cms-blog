@@ -1,0 +1,24 @@
+query GetBlogs($page: Int!, $pageSize: Int!) {
+  blogs(
+    pagination: { page: $page, pageSize: $pageSize }
+    status: PUBLISHED
+    sort: "publishedAt:desc"
+  ) {
+    documentId
+    title
+    description
+    categories {
+      documentId
+      name
+    }
+    publishedAt
+  }
+}
+
+query GetBlog($documentId: ID!) {
+  blog(documentId: $documentId) {
+    title
+    content
+    publishedAt
+  }
+}

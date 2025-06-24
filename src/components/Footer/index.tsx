@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { BsTwitterX } from 'react-icons/bs'
-import { BsGithub } from 'react-icons/bs'
+import { BsGithub, BsTwitterX } from 'react-icons/bs'
 import { FaBluesky } from 'react-icons/fa6'
 
 export default function Footer() {

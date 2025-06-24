@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import { GetCategoriesDocument, type GetCategoriesQuery } from '@/gql/graphql'
 import { client } from '@/lib/client'
-import Link from 'next/link'
 
 export const revalidate = 10
 

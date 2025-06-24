@@ -1,8 +1,8 @@
+import markdownToHtml from 'zenn-markdown-html'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { GetAboutDocument, type GetAboutQuery } from '@/gql/graphql'
 import { client } from '@/lib/client'
 import {} from '@/styles/font'
-import markdownToHtml from 'zenn-markdown-html'
 
 export default async function Page() {
   const { about: data } = await client.request<GetAboutQuery>(GetAboutDocument)

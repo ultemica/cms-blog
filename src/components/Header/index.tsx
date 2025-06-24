@@ -1,11 +1,11 @@
 'use client'
-import { themeAtom } from '@/atoms/theme.atom'
-import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { useAtom } from 'jotai/react'
 import { Code2, FolderGit2, Info, ListTodo, Moon, Sun, TerminalSquare } from 'lucide-react'
 import Link from 'next/link'
 import type React from 'react'
 import { FaXmark } from 'react-icons/fa6'
+import { themeAtom } from '@/atoms/theme.atom'
+import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 
 const MobileMenu: React.FC = () => {
   return (

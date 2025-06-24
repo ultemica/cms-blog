@@ -1,6 +1,6 @@
-import type { GetBlogsQuery } from '@/gql/graphql'
 import dayjs from 'dayjs'
 import Link from 'next/link'
+import type { GetBlogsQuery } from '@/gql/graphql'
 
 export default function BlogItem(blog: NonNullable<GetBlogsQuery['blogs'][number]>) {
   const categories = blog.categories.filter((category): category is NonNullable<typeof category> => category !== null)

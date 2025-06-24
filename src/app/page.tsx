@@ -1,9 +1,9 @@
-import {} from '@/styles/font'
 import type { AppBskyFeedDefs } from '@atproto/api'
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 import Link from 'next/link'
+import {} from '@/styles/font'
 import { fetchBlueskyPosts } from './bluesky'
 
 dayjs.extend(utc)

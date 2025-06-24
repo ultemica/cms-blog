@@ -1,12 +1,12 @@
-import { TableOfContents } from '@/components/ToC'
-import { GetBlogDocument, type GetBlogQuery, GetBlogsDocument, type GetBlogsQuery } from '@/gql/graphql'
-import { client } from '@/lib/client'
 import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsGithub, BsTwitterX } from 'react-icons/bs'
 import { FaBluesky } from 'react-icons/fa6'
 import markdownToHtml from 'zenn-markdown-html'
+import { TableOfContents } from '@/components/ToC'
+import { GetBlogDocument, type GetBlogQuery, GetBlogsDocument, type GetBlogsQuery } from '@/gql/graphql'
+import { client } from '@/lib/client'
 
 export const revalidate = 10
 

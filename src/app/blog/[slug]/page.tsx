@@ -1,14 +1,48 @@
-import { TableOfContents } from '@/components/ToC'
-import { GetBlogDocument, type GetBlogQuery, GetBlogsDocument, type GetBlogsQuery } from '@/gql/graphql'
-import { client } from '@/lib/client'
 import dayjs from 'dayjs'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsGithub, BsTwitterX } from 'react-icons/bs'
 import { FaBluesky } from 'react-icons/fa6'
 import markdownToHtml from 'zenn-markdown-html'
+import { TableOfContents } from '@/components/ToC'
+import { GetBlogDocument, type GetBlogQuery, GetBlogsDocument, type GetBlogsQuery } from '@/gql/graphql'
+import { client } from '@/lib/client'
 
 export const revalidate = 10
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const { blog } = await client.request<GetBlogQuery>(GetBlogDocument, {
+    documentId: slug
+  })
+  if (!blog) return {}
+
+  return {
+    title: blog.title,
+    description: blog.content.slice(0, 120),
+    openGraph: {
+      title: blog.title,
+      description: blog.content.slice(0, 120),
+      type: 'article',
+      url: `https://blog.tkgstrator.work/blog/${slug}`,
+      images: [
+        {
+          url: 'https://blog.tkgstrator.work/og_underground.png',
+          width: 1200,
+          height: 630,
+          alt: 'Under+Ground'
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.content.slice(0, 120),
+      images: ['https://blog.tkgstrator.work/og_underground.png']
+    }
+  }
+}
 
 export async function generateStaticParams() {
   // とりあえず最大100記事分だけ静的ビルドする

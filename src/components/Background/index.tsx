@@ -1,8 +1,8 @@
 'use client'
-import { themeAtom } from '@/atoms/theme.atom'
 import { useAtomValue } from 'jotai/react'
 import type React from 'react'
 import { useEffect, useRef } from 'react'
+import { themeAtom } from '@/atoms/theme.atom'
 
 // フルHD(1920x1080)で150個
 const SNOW_PER_PIXEL = 150 / (1920 * 1080)

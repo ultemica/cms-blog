@@ -1,18 +1,36 @@
 import type { Metadata } from 'next'
 import 'zenn-content-css'
 import './globals.css'
-import Footer from '@/components/Footer'
-import {} from '@/styles/font'
 import { ThemeProvider } from 'next-themes'
+import Footer from '@/components/Footer'
 import Background from '../components/Background'
 import Header from '../components/Header'
 
 export const metadata: Metadata = {
   title: 'Under+Ground',
-  description: 'NextJS+MicroCMS+TailwindCSS+Cusdis',
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png'
+  description: 'Welcome to Under+Ground, a blog about web development, design, and technology.',
+  keywords: ['tkgling', 'tkgstrator', 'えむいー', 'えいむー'],
+  openGraph: {
+    title: 'Under+Ground',
+    description: 'Welcome to Under+Ground, a blog about web development, design, and technology.',
+    url: 'https://tkgling.com',
+    siteName: 'Under+Ground',
+    images: [
+      {
+        url: 'https://blog.tkgstrator.work/og_underground.png',
+        width: 1200,
+        height: 630,
+        alt: 'Under+Ground'
+      }
+    ],
+    locale: 'en_US',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Under+Ground',
+    description: 'Welcome to Under+Ground, a blog about web development, design, and technology.',
+    images: ['https://blog.tkgstrator.work/og_underground.png']
   }
 }
 

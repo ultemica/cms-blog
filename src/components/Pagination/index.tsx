@@ -1,4 +1,6 @@
 'use client'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import {
   Pagination,
   PaginationContent,
@@ -6,8 +8,6 @@ import {
   PaginationNext,
   PaginationPrevious
 } from '@/components/ui/pagination'
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 
 const PaginationLink = ({ ...props }) => (
   <PaginationItem>

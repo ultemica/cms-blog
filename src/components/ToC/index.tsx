@@ -1,4 +1,4 @@
-import { type Heading, getHeadings } from '@/lib/headings'
+import { getHeadings, type Heading } from '@/lib/headings'
 
 // 目次レンダリング用リスト
 function RenderList({ headings, depth = 1 }: { headings: Heading[]; depth?: number }) {
